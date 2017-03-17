@@ -1,0 +1,33 @@
+Plan for presentation:
+-intro DBS
+  -> where it all started -> client server example
+    slide 2 + 3 from VMCAI
+  -> WSTS
+    slide 5 + 6 + 8 from VMCAI
+  -> issue: representing downward-closed sets, analysis terminates only on flattable example
+-ADL + ideal abstraction:
+  FoSSaCS + VMCAI (collaboration)
+  -> ADL gives a compact representation of downward-closed sets
+    slide 9 + 10 from VMCAI
+  -> ideal abstraction gives termination analysis at the cost of precision (tries to copy acceleration algorithms)
+    slide 11 + 12 + 13 + 14 from VMCAI
+    slide 15 from VMCAI with modification -> history
+    slide 16 + 17 + 18 + 19
+-the cover: What we get after all of this
+  -> what it looks like
+  -> some stats: cover size vs size of the tree, ...
+  -> some properties: closed under post, ...
+-termination of BDS
+  Beyond counter abstraction (collaboration)
+  -> trieber's stack: pseudo code, graph rewriting, cover
+  -> what does the invariant/ranking function looks like ?
+  -> why simple counter abstraction is not good enough ?
+  -> numerical abstraction
+  -> implementation and experimental result
+-dynamic package interfaces
+  dynamic package interfaces (collaboration)
+  -> inferring protocols for groups of interdependent objects
+  -> sets and iterators example
+  -> predicate abstraction + DBS encoding
+  -> cover + one step post -> DPI
+  -> DPI is not all, but it tells you what bookkeeping needs to be done.

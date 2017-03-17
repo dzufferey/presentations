@@ -1,0 +1,85 @@
+package piApprox
+
+import scala.actors.Actor
+import scala.actors.Actor._
+import scala.math._
+
+/** Simple example of a split/merge scheme.
+ *  Translated from a MPI example found at:
+ *  http://www-unix.mcs.anl.gov/mpi/usingmpi/examples/simplempi/main.htm
+ */
+
+abstract class Msg
+case class Intervals(i:Int) extends Msg
+case class Sum(d:Double) extends Msg
+case object Stop extends Msg
+
+object Topology {
+  val master = ("Master",
+    List(
+      ("workers(0)", "w0"),
+      ("workers(1)", "w1"),
+      ("workers(2)", "w2")
+    )
+  )
+  val w0 = ("Worker",Nil)
+  val w1 = ("Worker",Nil)
+  val w2 = ("Worker",Nil)
+}
+
+object Main extends Application {
+  val nb = 100
+  val ws = for { i <- List.range(1,1+nb) } yield { new Worker(i,nb) }
+  ws.foreach(w => w.start)
+
+  new Master(ws).start
+  
+}
+
+class Master(workers: List[Worker]) extends Actor {
+  val s = workers.size
+  
+  def act() {
+    println("Enter the number of intervals: ")
+	val n = readInt()
+
+	workers.foreach( w => w ! Intervals(n) )
+
+	var pi = 0.0
+	workers.foreach( w => receive {
+	  case Sum(p) => pi += p
+	  case err =>
+	    println("error!!")
+		error(err.toString)
+	})
+
+	println("PI ~= "+pi)
+	println("error = "+ abs(pi - Pi))
+
+	workers.foreach( w => w ! Stop)
+	exit('stop)
+  }
+}
+
+class Worker(id: Int, nbWorkers: Int) extends Actor {
+  def act() {
+    loop {
+      react {
+        case Intervals(n) => {
+		  val h = 1.0 / n
+		  val sum =
+		    List.range(id,n+1,nbWorkers).
+			map(i => {
+			  val x = h * (i - 0.5)
+			  4.0 / (1.0 + x*x)
+			}).
+			reduceLeft( (x,y) => x+y )
+		  reply(Sum(h * sum))
+		}
+        case Stop =>
+          //println("worker"+id+": Stop.")
+          exit('stop)
+      }
+    }
+  }
+}

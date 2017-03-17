@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="246.80566"
+   height="274.26791"
+   id="svg3427"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="New document 5">
+  <defs
+     id="defs3429" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="364.11713"
+     inkscape:cy="-54.294616"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="511"
+     inkscape:window-height="472"
+     inkscape:window-x="0"
+     inkscape:window-y="55"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata3432">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-10.882865,-203.79966)">
+    <g
+       id="g11947"
+       transform="translate(-1169.5738,208.08989)">
+      <text
+         sodipodi:linespacing="100%"
+         id="text11781"
+         y="9.3855495"
+         x="1179.4283"
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"
+         xml:space="preserve"><tspan
+           y="9.3855495"
+           x="1179.4283"
+           id="tspan11783"
+           sodipodi:role="line">Read top of the stack</tspan><tspan
+           id="tspan11785"
+           y="27.38555"
+           x="1179.4283"
+           sodipodi:role="line">Op1′  = Op1 - 1</tspan><tspan
+           id="tspan11787"
+           y="45.385551"
+           x="1179.4283"
+           sodipodi:role="line">Op2₁′ = Op2₁ + 1</tspan><tspan
+           id="tspan11789"
+           y="63.385551"
+           x="1179.4283"
+           sodipodi:role="line">Op2₂′ = Op2₂</tspan></text>
+      <text
+         sodipodi:linespacing="100%"
+         id="text11791"
+         y="110.78535"
+         x="1179.4283"
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"
+         xml:space="preserve"><tspan
+           y="110.78535"
+           x="1179.4283"
+           id="tspan11793"
+           sodipodi:role="line">CAS succeed</tspan><tspan
+           id="tspan11795"
+           y="128.78534"
+           x="1179.4283"
+           sodipodi:role="line">Op1′  = Op1</tspan><tspan
+           id="tspan11797"
+           y="146.78534"
+           x="1179.4283"
+           sodipodi:role="line">Op2₁′ = 0</tspan><tspan
+           id="tspan11799"
+           y="164.78534"
+           x="1179.4283"
+           sodipodi:role="line">Op2₂′ = Op2₁ + Op2₂ - 1</tspan></text>
+      <text
+         sodipodi:linespacing="100%"
+         id="text11801"
+         y="212.23354"
+         x="1179.4283"
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"
+         xml:space="preserve"><tspan
+           y="212.23354"
+           x="1179.4283"
+           id="tspan11803"
+           sodipodi:role="line">CAS fails</tspan><tspan
+           id="tspan11807"
+           y="230.23354"
+           x="1179.4283"
+           sodipodi:role="line">Op1′  = Op1 + 1</tspan><tspan
+           id="tspan11809"
+           y="248.23354"
+           x="1179.4283"
+           sodipodi:role="line">Op2₁′ = Op2₁</tspan><tspan
+           y="266.23352"
+           x="1179.4283"
+           sodipodi:role="line"
+           id="tspan5061">Op2₂′ = Op2₂ - 1</tspan></text>
+    </g>
+  </g>
+</svg>

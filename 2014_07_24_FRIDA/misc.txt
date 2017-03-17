@@ -1,0 +1,2 @@
+Paxos: CC-BY-SA-NC  Matt Taylor
+Lamport: Copyright ACM

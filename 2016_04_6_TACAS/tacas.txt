@@ -1,0 +1,102 @@
+motivation:
+    -> arm picture
+    arrows to bbb: discrete
+    arrows to links: continous
+
+    α,β -> cos/sin
+    q² = 1
+
+    reasoning tool:
+        discrete/linear
+            sat
+            qe-elimination
+            interpolation
+        non-linear continous
+            δ-sat
+            qe (polynomials)
+            interpolation <- we fill that gap
+     
+interpolation
+    3 conditions
+    picture:
+         \   |   /
+        A | I|  | B
+         /   |   \
+    usally we can extract them from unsat proof
+
+δ-decidability
+
+    ℝ + polynomials + trigonometry ⇒ undecidable
+
+    allow perturbation: decidable
+    
+    sean's picture
+
+
+ICP
+    algo on the left
+    picture on the right
+        operation on boxes
+
+B&P Example
+    ...
+
+What kind of proof does ICP generate ?
+
+    D, ∧_i C_i ⊢ ⊥
+
+    algo
+        (1) select
+        (3) prune
+        (2) branching
+
+Select
+    ...
+
+Branch
+    ...
+
+Prune
+    ...
+
+Resolution proof
+
+    turn the branching into resolution proof
+
+    Pudlak Interpolation system
+
+Interpolation for ICP 
+
+Example
+
+Implementation
+    in the dReal SMT-solver
+    github link
+        https://github.com/dzufferey/dreal3/
+    numbers in the paper (runtime, size of the interpolant)
+
+ODE
+    also works the same
+    it is just a special kind of pruning operator (more expensive than the rest)
+    example
+
+Weak QE
+    arm picture
+    eliminate variables
+    from non-linear to interval + bool
+
+some more
+    labelling
+    getting different interpolant using δ
+
+related work
+    LA(ℤ),
+        Brillout et al. 10
+        Griggio et al. 11
+    LA(ℚ)
+        McMillan 04
+        Rybalchenko & Sofronie-Stokkermans 07
+    Dai et al. 13,
+        interpolant for polynomial using semi-definite programming
+            Archimedean condition which is very similar to δ-decidability
+    MathSat5, Princess, SmtInterpol, Z3

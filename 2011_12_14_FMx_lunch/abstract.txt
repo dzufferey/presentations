@@ -1,0 +1,45 @@
+Analysis of depth-bounded processes (mobile processes).
+
+We are interested in the verification of mobile processes, i.e., message passing systems that admit unbounded creation of processes and name mobility. More specifically we focus on the case of depth-bounded processes which is form the largest known fragment of the π-calculus for which non-trivial verification problems are still decidable. In particular, the covering problem (or control-state reachability) is decidable. First, we show examples to motivate the need for modeling mobility, how it is modelled in the π-calculus and what restriction we requires to analyse it. Then, we show see how we can analyze depth-bounded processes using the idea of well-structured transitions systems and, if time permit, we present current work on making such analysis more practical.
+
+
+
+Take home message:
+==================
+-mobility + creation is hard, but it occurs
+-A model that captures a wide-range of system, especially good for client-server architecture
+-a fully automated way of analyzing such system
+-why we think it can scale
+
+
+Intro
+-----
+say a few words about me + intern with Shaz
+
+Part 1
+------
+mobility ?
+examples, actor programming abstraction, implicitly all over the place.
+Depth-bounded processes ? client-server.
+
+Part 2
+------
+the pi-calculus, model dynamic system using a very limited number of primitives.
+-> names, or channels as first-class citizens.
+What are DBP ?
+What kind of property ?
+
+Part 3
+------
+WSTS
+How to apply it to DBP ?
+backward vs forward
+
+Part 4
+------
+actual complexity -> as bad as you want
+Other model where is was applied with success -> Petri nets (with extensions), Lossy Channels systems.
+
+Overtime
+--------
+report from Picasso

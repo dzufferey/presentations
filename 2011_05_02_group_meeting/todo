@@ -1,0 +1,43 @@
+Manipulating infinite posets.
+=============================
+
+based on a paper by Reinhard Diestel and Oleg Pikhurko:
+"On the cofinality of infinite partially ordered set:
+ factoring a poset into lean essential subsets"
+
+(1) intro an presenting the problem of forward analysis of WSTS and acceleration.
+(2) lub-acceleration: representing the limit elements (sobrification).
+(3) removing the dependence on the path (abstract interpretation of WSTS).
+(4) widening: like acceleration but reasoning only about the underlying space.
+(5) flat abstraction: always terminating analysis.
+
+
+Definitions:
+------------
+
+* poset, WQO (why quasi and not partial?)
+A quasi-order (preorder) in a reflexive and transitive relation.
+A partial order is a reflexive, transitive, and anti-symmetric relation.
+A well-quasi-order is a quasi-order that has no infinite antichain or infinite strictly decreasing sequence.
+
+Why using quasi order rather than partial orders:
+  Because anti-symmetry is not needed for most of the proofs.
+  In practice, most of the quasi-orders that people use are partial-orders.
+
+* upward/downward closure:
+  \downarrow X = { y | \exists x \in X s.t. y \leq x }
+
+* cofinal, cofinality
+A subset Q of a poset P is cofinal iff P \subseteq \downarrow Q.
+The cofinality of P, cf(P), is the least cardinality of its cofinal subset.
+
+A subset that is not cofinal is called small.
+
+In the rest of this talk we speaks about: countable poset (aleph_0) that have countable cofinality.
+
+* Special sets:
+chain: a set where every two element is comparable.
+directed: all pairs of elements admit a least upper bound.
+lean: P is lean iff all subsets size at least cf(P) are cofinal in P.
+divisible: P is divisible if it is the union of two (fewer than cf(P)) small subsets,
+essential: if it is the complement of a small set.

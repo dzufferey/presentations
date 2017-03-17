@@ -1,0 +1,44 @@
+package piApprox
+
+import scala.actors.Actor
+import scala.actors.Actor._
+
+/** Simple example of a split/merge scheme.
+ *  Translated from a MPI example found at:
+ *  http://www-unix.mcs.anl.gov/mpi/usingmpi/examples/simplempi/main.htm
+ */
+
+abstract class AbsMsg
+case object AbsIntervals extends AbsMsg
+case object AbsSum extends AbsMsg
+case object AbsStop extends AbsMsg
+
+object AbsTopology {
+  val master = ("AbsMaster",List(("workers(0)", "w0")))
+  val w0 = ("AbsWorker",Nil)
+}
+
+class AbsMaster(workers: List[Worker]) extends Actor {
+  val s = workers.size
+  
+  def act() {
+    workers.foreach( _ ! AbsIntervals )
+
+    workers.foreach( w => receive {
+      case AbsSum => ()
+    })
+    exit('stop)
+  }
+}
+
+class AbsWorker extends Actor {
+  def act() {
+    loop {
+      react {
+        case AbsIntervals => 
+	  reply(AbsSum)
+	  exit('stop)
+      }
+    }
+  }
+}

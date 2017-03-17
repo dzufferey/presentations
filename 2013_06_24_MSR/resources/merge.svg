@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="443.4541"
+   height="236.91992"
+   id="svg3064"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="merge.svg">
+  <defs
+     id="defs3066" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="203.59797"
+     inkscape:cy="70.914566"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1440"
+     inkscape:window-height="841"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata3069">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-177.14285,-221.72546)">
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+       x="177.14285"
+       y="232.36218"
+       id="text3072"
+       sodipodi:linespacing="100%"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         sodipodi:role="line"
+         id="tspan3074"
+         x="177.14285"
+         y="232.36218"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"><tspan
+   style="font-weight:bold"
+   id="tspan3108">procedure</tspan> merge(a: Node, b: Node) <tspan
+   style="font-weight:bold"
+   id="tspan3110">returns</tspan> (res: Node)</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="246.36218"
+         id="tspan3076"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"><tspan
+   style="font-weight:bold"
+   id="tspan3112">  requires</tspan> slseg(a, null) * slseg(b, null);</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="260.36218"
+         id="tspan3078"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"><tspan
+   style="font-weight:bold"
+   id="tspan3114">  ensures</tspan> slseg(res, null);</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="274.36218"
+         id="tspan3080"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">...</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="288.36218"
+         id="tspan3082"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono" /><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="302.36218"
+         id="tspan3084"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"><tspan
+   style="font-weight:bold"
+   id="tspan3116">procedure</tspan> merge_sort(lst: Node) <tspan
+   style="font-weight:bold"
+   id="tspan3130">returns</tspan> (res: Node)</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="316.36218"
+         id="tspan3086"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"><tspan
+   style="font-weight:bold"
+   id="tspan3118">  requires</tspan> lseg(lst, null);</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="330.36218"
+         id="tspan3088"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"><tspan
+   style="font-weight:bold"
+   id="tspan3120">  ensures</tspan> slseg(res, null);</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="344.36218"
+         id="tspan3090"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">{</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="358.36218"
+         id="tspan3092"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"><tspan
+   style="font-weight:bold"
+   id="tspan3122">  var</tspan> lst1: Node, lst2: Node;</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="372.36218"
+         id="tspan3094"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">  lst1, lst2 := split(lst);</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="386.36218"
+         id="tspan3096"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"><tspan
+   style="font-weight:bold"
+   id="tspan3124">  var</tspan> a: Node;</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="400.36218"
+         id="tspan3098"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">  a := merge_sort(lst1);</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="414.36218"
+         id="tspan3100"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"><tspan
+   style="font-weight:bold"
+   id="tspan3126">  var</tspan> b: Node;</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="428.36218"
+         id="tspan3102"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">  b := merge_sort(lst2);</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="442.36218"
+         id="tspan3104"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"><tspan
+   style="font-weight:bold"
+   id="tspan3128">  return</tspan> merge(a, b);</tspan><tspan
+         sodipodi:role="line"
+         x="177.14285"
+         y="456.36218"
+         id="tspan3106"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">}</tspan></text>
+  </g>
+</svg>

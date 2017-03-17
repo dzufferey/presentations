@@ -1,0 +1,97 @@
+-present the background: analysis of message passing systems.
+    syntax (CSP notation):
+      C ! msg : sending msg to channel C (asynchronous)
+      C !? msg : sending msg to channel C (synchronous)
+      C ? msg : receiving msg from channel C
+
+
+-depth-bounded processes
+  configurations/state as a graph => wqo (Kruskal tree theorem)
+  monotonicity requirements for the ordering to be a simulation relation.
+
+
+-collections:
+  -pi-cal encoding is not depth bounded,
+  -broadcast pi-cal: good for hardware, but not for software.
+  -operation on collection:
+    broadcast is still monotonic,
+    gather not,
+    more general: iteration.
+  
+  -what can we do without gather: publish-subscribe.
+  -why do we need gather: master-worker.
+
+  -semantics of iteration:
+    what break with the analysis: loop terminates (someday), not monotonic.
+    what kind of loop, since it is added to the calculus, how do we define it ?
+    unrolling (inductive definition, small step):
+      +unrolling is easier to define
+      +closer to real life programs, always defined.
+      -makes acceleration hard/impossible (non-flattable systems)
+    big step semantics:
+      +monotonicity is easier to prove
+      -cannot be applied all the time (loop interleaving)
+
+
+  -Goal be useful, not complete.
+  -Hope: Petri net with only one reset arc are decidable.
+         When iterations involve only one collection/process at the same time ?
+
+  -how a forward algorithm works ?
+     drawing explains better.
+
+
+
+
+
+  -Thomas' idea:
+    -> do a case split:
+      analysis says if safe then fine
+      else get the trace.
+    -> check for spuriousness of the trace
+      if not spurious then counterexample
+      else ? don't know or is it possible to refine the analysis ?
+
+  -what we can do ?? in general noting: Hilbert's tenth problem.
+    -problem: an algorithm to solve diophantine equations
+    -explain encoding:
+      3 processes -> 2 'polynomes' + 1 'comparator'
+      1 collection per variable
+      4 channels (or message type)
+      description:
+        (1) the comparator fill arbitrarilly the collections
+        (2) the polynomes evaluates the equations
+        (3) the comparator check for equality,
+            succeed iff step (1) gave a solution.
+      parts:
+        polynome: x => for x <- X do comparator !? polynome1/2;
+                  2x => for ; for ;
+                  x^2 => for for ; ;
+                  then comparator !? done1/2
+        comparator: receive alternatively polynome1/2, then done1/2.
+                    if done1/2 comes a the same time, the equation is solved.
+    -what does break in the analysis:
+      acceleration not possible (unless very fancy definition of acceleration);
+      encoding of collection as set or list does not change anything ...
+  -let consider a simpler problem:
+      (add) two sets of same arbitrary size (A,B);
+      (map) A,B mapped separately;
+      (combine) combining result (∀ a ∈ A, pick b ∈ B, then assert B = ∅).
+    Here we can we can define a trace with some acceleration.
+      what can we does a trace looks like:
+        "add"^ω "map A"^ω "map B"^ω "combine"^ω "B not empty".
+      what can we do with that trace ?
+        It is spurious because A and B have the same cardinality.
+          same cardinality at creation,
+          map preserve cardinality,
+          combine takes as many elements from A and B.
+
+   -What we are trying to solve:
+    Given a finite flat trace T, i.e.
+        finite number of acceleration,
+        no nested acceleration, with the only following elements:
+          sending messages (!), receiving message (?), creating processes (new),
+          adding into a mltset (add), taking out of a mltset (choose),
+          iteration over all the elements of the mltset (foreach),
+          whatever restriction you want/need.
+    Devise a way to know if the trace is a real trace.

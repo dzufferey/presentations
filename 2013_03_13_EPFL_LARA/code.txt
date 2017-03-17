@@ -1,0 +1,41 @@
+struct node {
+    struct node *next;
+    value data;
+};
+struct stack { struct node *Top; };
+struct stack *S;
+
+void init() {
+    S = alloc();
+    S->Top = NULL;
+}
+
+value pop() {
+  struct node *t, *x;
+  do {
+    t = S->Top;
+    if (t == NULL) return EMPTY;
+    x = t->next;
+  } while (!CAS(&S->Top,t,x));
+  return t->data;
+}
+
+void push(value v) {
+  struct node *t, *x;
+  x = alloc();
+  x->data = v;
+  do {
+      t = S->Top;
+      x->next = t;
+  } while (!CAS(&S->Top,t,x));
+}
+
+==============================
+
+void op() {
+    do {
+op1:      t = S->Top;
+          x = ... ;
+op2:
+    } while (!CAS(&S->Top,t,x));
+}

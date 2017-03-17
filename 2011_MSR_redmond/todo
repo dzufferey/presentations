@@ -1,0 +1,18 @@
+no intro.
+
+motivation:
+  illusion of \infty ressources
+  in practice there is a finite amount of ressource
+  We want to distiguish:
+    high-priority (need a machine now for my customer),
+    low-priority (large amount of batch processing).
+
+workflow.
+
+job model: DAG
+infrastructure model: tree-like structure
+large scale scheduling: abstraction-refinement loop
+
+evaluation:
+    (1) against Hadoop;
+    (2) schedulers.

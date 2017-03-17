@@ -1,0 +1,710 @@
+var data: Fld<Int>;
+
+var
+next: Fld<Loc>;
+
+function
+  llseg_domain(data: Fld<Int>, next: Fld<Loc>, x_1: Loc, y_1: Loc, ub: Int) 
+returns (ghost Dom: Set<Loc>)
+{
+  (forall ?l1: Loc ::
+     Btwn(next, x_1, ?l1, y_1) && ?l1 in Dom && ?l1 != y_1 ||
+     (?l1 == y_1 || !(Btwn(next, x_1, ?l1, y_1))) && ?l1 !in Dom
+  /* domain of llseg */)
+}
+
+
+predicate
+  llseg_struct(data: Fld<Int>, next: Fld<Loc>, x_1: Loc, y_1: Loc, ub: Int, 
+               ghost Dom: Set<Loc>)
+{
+  (Btwn(next, x_1, y_1, y_1) &&
+  (forall ?l1: Loc :: ?l1.data <= ub || ?l1 !in Dom)
+  /* structure of llseg */)
+}
+
+
+function lseg_domain(next: Fld<Loc>, x_2: Loc, y_2: Loc) 
+returns (ghost Dom: Set<Loc>)
+{
+  (forall ?l1: Loc ::
+     Btwn(next, x_2, ?l1, y_2) && ?l1 in Dom && ?l1 != y_2 ||
+     (?l1 == y_2 || !(Btwn(next, x_2, ?l1, y_2))) && ?l1 !in Dom
+  /* domain of lseg */)
+}
+
+
+predicate
+  lseg_struct(next: Fld<Loc>, x_2: Loc, y_2: Loc, ghost Dom: Set<Loc>)
+{
+  (Btwn(next, x_2, y_2, y_2) /* structure of lseg */)
+}
+
+
+function
+  lslseg_domain(data: Fld<Int>, next: Fld<Loc>, x_3: Loc, y_3: Loc, ub_1: Int)
+returns (ghost Dom: Set<Loc>)
+{
+  (forall ?l1: Loc ::
+     Btwn(next, x_3, ?l1, y_3) && ?l1 in Dom && ?l1 != y_3 ||
+     (?l1 == y_3 || !(Btwn(next, x_3, ?l1, y_3))) && ?l1 !in Dom
+  /* domain of lslseg */)
+}
+
+
+predicate
+  lslseg_struct(data: Fld<Int>, next: Fld<Loc>, x_3: Loc, y_3: Loc, 
+                ub_1: Int, ghost Dom: Set<Loc>)
+{
+  (Btwn(next, x_3, y_3, y_3) &&
+     (forall ?l1: Loc :: ?l1.data <= ub_1 || ?l1 !in Dom) &&
+  (forall ?l1: Loc, ?l2: Loc :: ?l1.data <= ?l2.data ||
+     !(Btwn(next, ?l1, ?l2, ?l2)) || ?l1 !in Dom || ?l2 !in Dom)
+  /* structure of lslseg */)
+}
+
+
+function slseg_domain(data: Fld<Int>, next: Fld<Loc>, x_4: Loc, y_4: Loc) 
+returns (ghost Dom: Set<Loc>)
+{
+  (forall ?l1: Loc ::
+     Btwn(next, x_4, ?l1, y_4) && ?l1 in Dom && ?l1 != y_4 ||
+     (?l1 == y_4 || !(Btwn(next, x_4, ?l1, y_4))) && ?l1 !in Dom
+  /* domain of slseg */)
+}
+
+
+predicate
+  slseg_struct(data: Fld<Int>, next: Fld<Loc>, x_4: Loc, y_4: Loc, 
+               ghost Dom: Set<Loc>)
+{
+  (Btwn(next, x_4, y_4, y_4) &&
+  (forall ?l1: Loc, ?l2: Loc :: ?l1.data <= ?l2.data ||
+     !(Btwn(next, ?l1, ?l2, ?l2)) || ?l1 !in Dom || ?l2 !in Dom)
+  /* structure of slseg */)
+}
+
+
+function
+  uslseg_domain(data: Fld<Int>, next: Fld<Loc>, x_5: Loc, y_5: Loc, lb: Int) 
+returns (ghost Dom: Set<Loc>)
+{
+  (forall ?l1: Loc ::
+     Btwn(next, x_5, ?l1, y_5) && ?l1 in Dom && ?l1 != y_5 ||
+     (?l1 == y_5 || !(Btwn(next, x_5, ?l1, y_5))) && ?l1 !in Dom
+  /* domain of uslseg */)
+}
+
+
+predicate
+  uslseg_struct(data: Fld<Int>, next: Fld<Loc>, x_5: Loc, y_5: Loc, lb: Int, 
+                ghost Dom: Set<Loc>)
+{
+  (Btwn(next, x_5, y_5, y_5) &&
+     (forall ?l1: Loc :: ?l1.data >= lb || ?l1 !in Dom) &&
+  (forall ?l1: Loc, ?l2: Loc :: ?l1.data <= ?l2.data ||
+     !(Btwn(next, ?l1, ?l2, ?l2)) || ?l1 !in Dom || ?l2 !in Dom)
+  /* structure of uslseg */)
+}
+
+
+procedure merge(ghost AllocCaller: Set<Loc>, a: Loc, b: Loc) 
+returns (ghost Alloc_init: Set<Loc>, ghost Alloc: Set<Loc>, res: Loc) 
+locals (last: Loc, ghost AllocCallee_init: Set<Loc>, 
+        ghost AllocCallee: Set<Loc>)
+/* precondition of merge */
+check requires
+  (exists ?leaf_AllocCaller_1: Set<Loc>, ?sep_?leaf_AllocCaller_1: Set<Loc>,
+          ?sep_?leaf_AllocCaller_2: Set<Loc> ::
+     ?leaf_AllocCaller_1 ==
+       ?sep_?leaf_AllocCaller_2 ++ ?sep_?leaf_AllocCaller_1 &&
+     ?sep_?leaf_AllocCaller_1 == slseg_domain(data, next, a, null) &&
+     ?sep_?leaf_AllocCaller_2 == slseg_domain(data, next, b, null) &&
+     {} == ?sep_?leaf_AllocCaller_1 ** ?sep_?leaf_AllocCaller_2 &&
+     ?leaf_AllocCaller_1 <= AllocCaller &&
+     slseg_struct(data, next, a, null, ?sep_?leaf_AllocCaller_1) &&
+     slseg_struct(data, next, b, null, ?sep_?leaf_AllocCaller_2));
+/* initial footprint of merge */
+free ensures null !in Alloc_init &&
+  (exists ?leaf_Alloc_init_1: Set<Loc>, ?sep_?leaf_Alloc_init_1: Set<Loc>,
+          ?sep_?leaf_Alloc_init_2: Set<Loc> ::
+     ?leaf_Alloc_init_1 == ?sep_?leaf_Alloc_init_2 ++ ?sep_?leaf_Alloc_init_1 &&
+     ?leaf_Alloc_init_1 == Alloc_init &&
+     ?sep_?leaf_Alloc_init_1 == slseg_domain(data, old(next), a, null) &&
+     ?sep_?leaf_Alloc_init_2 == slseg_domain(data, old(next), b, null) &&
+     {} == ?sep_?leaf_Alloc_init_1 ** ?sep_?leaf_Alloc_init_2 &&
+     slseg_struct(data, old(next), a, null, ?sep_?leaf_Alloc_init_1) &&
+     slseg_struct(data, old(next), b, null, ?sep_?leaf_Alloc_init_2));
+/* postcondition of merge */
+ensures
+  (exists ?leaf_Alloc_1: Set<Loc> :: ?leaf_Alloc_1 == Alloc &&
+     ?leaf_Alloc_1 == slseg_domain(data, next, res, null) &&
+     slseg_struct(data, next, res, null, ?leaf_Alloc_1));
+/* framecondition of merge */
+free ensures null !in Alloc;
+/* framecondition of merge */
+free ensures Alloc_init <= AllocCaller;
+/* framecondition of merge */
+free ensures Alloc ** (AllocCaller -- Alloc_init) == {};
+/* framecondition of merge */
+free ensures Frame(Alloc_init, AllocCaller, old(next), next);
+{
+  /* initial footprint of merge */
+  assume null !in Alloc_init &&
+    (exists ?leaf_Alloc_init_1: Set<Loc>, ?sep_?leaf_Alloc_init_1: Set<Loc>,
+            ?sep_?leaf_Alloc_init_2: Set<Loc> ::
+       ?leaf_Alloc_init_1 ==
+         ?sep_?leaf_Alloc_init_2 ++ ?sep_?leaf_Alloc_init_1 &&
+       ?leaf_Alloc_init_1 == Alloc_init &&
+       ?sep_?leaf_Alloc_init_1 == slseg_domain(data, next, a, null) &&
+       ?sep_?leaf_Alloc_init_2 == slseg_domain(data, next, b, null) &&
+       {} == ?sep_?leaf_Alloc_init_1 ** ?sep_?leaf_Alloc_init_2 &&
+       slseg_struct(data, next, a, null, ?sep_?leaf_Alloc_init_1) &&
+       slseg_struct(data, next, b, null, ?sep_?leaf_Alloc_init_2));
+  Alloc := Alloc_init;
+  res := null;
+  choose
+  {
+    /* if then */
+    assume a == null;
+    return Alloc_init, Alloc, b;
+  }
+  or
+  {
+    /* if else */
+    assume a != null;
+    choose
+    {
+      /* if then */
+      assume b == null;
+      return Alloc_init, Alloc, a;
+    }
+    or
+    {
+      /* if else */
+      assume b != null;
+      choose
+      {
+        /* if then */
+        assume a.data <= b.data;
+        res := a;
+        /* check heap access */
+        assert a in Alloc;
+        a := a.next;
+      }
+      or
+      {
+        /* if else */
+        assume !(a.data <= b.data);
+        res := b;
+        /* check heap access */
+        assert b in Alloc;
+        b := b.next;
+      }
+    }
+  }
+  havoc last;
+  last := res;
+  AllocCallee_init, AllocCallee, res, last, b, a :=
+    call merge_loop(Alloc, res, last, b, a);
+  Alloc := AllocCallee ++ (Alloc -- AllocCallee_init);
+  return Alloc_init, Alloc, res;
+}
+
+procedure
+  merge_loop(ghost AllocCaller: Set<Loc>, res_init: Loc, last_init: Loc, 
+             b_init: Loc, a_init: Loc) 
+returns (ghost Alloc_init: Set<Loc>, ghost Alloc: Set<Loc>, res: Loc, 
+         last: Loc, b: Loc, a: Loc) 
+locals (ghost AllocCallee_init: Set<Loc>, ghost AllocCallee: Set<Loc>)
+/* invariant */
+check requires
+  (exists ?leaf_AllocCaller_5: Set<Loc>, ?leaf_AllocCaller_6: Set<Loc>,
+          ?sep_?leaf_AllocCaller_7: Set<Loc>,
+          ?sep_?leaf_AllocCaller_8: Set<Loc>,
+          ?sep_?leaf_AllocCaller_9: Set<Loc>,
+          ?sep_?leaf_AllocCaller_10: Set<Loc>,
+          ?sep_?leaf_AllocCaller_11: Set<Loc>,
+          ?sep_?sep_?leaf_AllocCaller_1: Set<Loc>,
+          ?sep_?sep_?leaf_AllocCaller_3: Set<Loc> ::
+     ?leaf_AllocCaller_5 ==
+       ?sep_?leaf_AllocCaller_11 ++ ?sep_?leaf_AllocCaller_10 ++
+         ?sep_?leaf_AllocCaller_9 ++ ?sep_?leaf_AllocCaller_7 &&
+     ?leaf_AllocCaller_6 ==
+       ?sep_?leaf_AllocCaller_11 ++ ?sep_?leaf_AllocCaller_10 ++
+         ?sep_?leaf_AllocCaller_9 ++ ?sep_?leaf_AllocCaller_8 &&
+     ?sep_?leaf_AllocCaller_7 == ?sep_?sep_?leaf_AllocCaller_1 &&
+     ?sep_?leaf_AllocCaller_8 == ?sep_?sep_?leaf_AllocCaller_3 &&
+     ?sep_?leaf_AllocCaller_9 ==
+       lslseg_domain(data, next, res_init, last_init, last_init.data) &&
+     ?sep_?leaf_AllocCaller_10 ==
+       uslseg_domain(data, next, a_init, null, last_init.data) &&
+     ?sep_?leaf_AllocCaller_11 ==
+       uslseg_domain(data, next, b_init, null, last_init.data) &&
+     ?sep_?sep_?leaf_AllocCaller_1 == {last_init} &&
+     ?sep_?sep_?leaf_AllocCaller_3 == {last_init} &&
+     last_init.next == a_init && {} == {} &&
+       {} == ?sep_?leaf_AllocCaller_7 ** ?sep_?leaf_AllocCaller_9 &&
+       {} == ?sep_?leaf_AllocCaller_7 ** ?sep_?leaf_AllocCaller_10 &&
+       {} == ?sep_?leaf_AllocCaller_7 ** ?sep_?leaf_AllocCaller_11 &&
+       {} == ?sep_?leaf_AllocCaller_9 ** ?sep_?leaf_AllocCaller_10 &&
+       {} == ?sep_?leaf_AllocCaller_9 ** ?sep_?leaf_AllocCaller_11 &&
+       {} == ?sep_?leaf_AllocCaller_10 ** ?sep_?leaf_AllocCaller_11 &&
+       ?leaf_AllocCaller_5 <= AllocCaller &&
+       lslseg_struct(data, next, res_init, last_init, last_init.data,
+                     ?sep_?leaf_AllocCaller_9) &&
+       uslseg_struct(data, next, a_init, null, last_init.data,
+                     ?sep_?leaf_AllocCaller_10) &&
+       uslseg_struct(data, next, b_init, null, last_init.data,
+                     ?sep_?leaf_AllocCaller_11) ||
+       last_init.next == b_init && {} == {} &&
+         {} == ?sep_?leaf_AllocCaller_8 ** ?sep_?leaf_AllocCaller_9 &&
+         {} == ?sep_?leaf_AllocCaller_8 ** ?sep_?leaf_AllocCaller_10 &&
+         {} == ?sep_?leaf_AllocCaller_8 ** ?sep_?leaf_AllocCaller_11 &&
+         {} == ?sep_?leaf_AllocCaller_9 ** ?sep_?leaf_AllocCaller_10 &&
+         {} == ?sep_?leaf_AllocCaller_9 ** ?sep_?leaf_AllocCaller_11 &&
+         {} == ?sep_?leaf_AllocCaller_10 ** ?sep_?leaf_AllocCaller_11 &&
+         ?leaf_AllocCaller_6 <= AllocCaller &&
+         lslseg_struct(data, next, res_init, last_init, last_init.data,
+                       ?sep_?leaf_AllocCaller_9) &&
+         uslseg_struct(data, next, a_init, null, last_init.data,
+                       ?sep_?leaf_AllocCaller_10) &&
+         uslseg_struct(data, next, b_init, null, last_init.data,
+                       ?sep_?leaf_AllocCaller_11));
+/* initial footprint of merge_loop */
+free ensures null !in Alloc_init &&
+  (exists ?leaf_Alloc_init_3: Set<Loc>, ?leaf_Alloc_init_4: Set<Loc>,
+          ?sep_?leaf_Alloc_init_4: Set<Loc>,
+          ?sep_?leaf_Alloc_init_5: Set<Loc>,
+          ?sep_?leaf_Alloc_init_6: Set<Loc>,
+          ?sep_?leaf_Alloc_init_7: Set<Loc>,
+          ?sep_?leaf_Alloc_init_8: Set<Loc>,
+          ?sep_?sep_?leaf_Alloc_init_1: Set<Loc>,
+          ?sep_?sep_?leaf_Alloc_init_3: Set<Loc> ::
+     ?leaf_Alloc_init_3 ==
+       ?sep_?leaf_Alloc_init_8 ++ ?sep_?leaf_Alloc_init_7 ++
+         ?sep_?leaf_Alloc_init_6 ++ ?sep_?leaf_Alloc_init_4 &&
+     ?leaf_Alloc_init_4 ==
+       ?sep_?leaf_Alloc_init_8 ++ ?sep_?leaf_Alloc_init_7 ++
+         ?sep_?leaf_Alloc_init_6 ++ ?sep_?leaf_Alloc_init_5 &&
+     ?sep_?leaf_Alloc_init_4 == ?sep_?sep_?leaf_Alloc_init_1 &&
+     ?sep_?leaf_Alloc_init_5 == ?sep_?sep_?leaf_Alloc_init_3 &&
+     ?sep_?leaf_Alloc_init_6 ==
+       lslseg_domain(data, old(next), res_init, last_init, last_init.data) &&
+     ?sep_?leaf_Alloc_init_7 ==
+       uslseg_domain(data, old(next), a_init, null, last_init.data) &&
+     ?sep_?leaf_Alloc_init_8 ==
+       uslseg_domain(data, old(next), b_init, null, last_init.data) &&
+     ?sep_?sep_?leaf_Alloc_init_1 == {last_init} &&
+     ?sep_?sep_?leaf_Alloc_init_3 == {last_init} &&
+     ?leaf_Alloc_init_3 == Alloc_init && last_init.old(next) == a_init &&
+       {} == {} &&
+       {} == ?sep_?leaf_Alloc_init_4 ** ?sep_?leaf_Alloc_init_6 &&
+       {} == ?sep_?leaf_Alloc_init_4 ** ?sep_?leaf_Alloc_init_7 &&
+       {} == ?sep_?leaf_Alloc_init_4 ** ?sep_?leaf_Alloc_init_8 &&
+       {} == ?sep_?leaf_Alloc_init_6 ** ?sep_?leaf_Alloc_init_7 &&
+       {} == ?sep_?leaf_Alloc_init_6 ** ?sep_?leaf_Alloc_init_8 &&
+       {} == ?sep_?leaf_Alloc_init_7 ** ?sep_?leaf_Alloc_init_8 &&
+       lslseg_struct(data, old(next), res_init, last_init, last_init.data,
+                     ?sep_?leaf_Alloc_init_6) &&
+       uslseg_struct(data, old(next), a_init, null, last_init.data,
+                     ?sep_?leaf_Alloc_init_7) &&
+       uslseg_struct(data, old(next), b_init, null, last_init.data,
+                     ?sep_?leaf_Alloc_init_8) ||
+       ?leaf_Alloc_init_4 == Alloc_init && last_init.old(next) == b_init &&
+         {} == {} &&
+         {} == ?sep_?leaf_Alloc_init_5 ** ?sep_?leaf_Alloc_init_6 &&
+         {} == ?sep_?leaf_Alloc_init_5 ** ?sep_?leaf_Alloc_init_7 &&
+         {} == ?sep_?leaf_Alloc_init_5 ** ?sep_?leaf_Alloc_init_8 &&
+         {} == ?sep_?leaf_Alloc_init_6 ** ?sep_?leaf_Alloc_init_7 &&
+         {} == ?sep_?leaf_Alloc_init_6 ** ?sep_?leaf_Alloc_init_8 &&
+         {} == ?sep_?leaf_Alloc_init_7 ** ?sep_?leaf_Alloc_init_8 &&
+         lslseg_struct(data, old(next), res_init, last_init, last_init.data,
+                       ?sep_?leaf_Alloc_init_6) &&
+         uslseg_struct(data, old(next), a_init, null, last_init.data,
+                       ?sep_?leaf_Alloc_init_7) &&
+         uslseg_struct(data, old(next), b_init, null, last_init.data,
+                       ?sep_?leaf_Alloc_init_8));
+/* invariant */
+free ensures
+  (exists ?leaf_Alloc_5: Set<Loc>, ?leaf_Alloc_6: Set<Loc>,
+          ?sep_?leaf_Alloc_1: Set<Loc>, ?sep_?leaf_Alloc_2: Set<Loc>,
+          ?sep_?leaf_Alloc_3: Set<Loc>, ?sep_?leaf_Alloc_4: Set<Loc>,
+          ?sep_?leaf_Alloc_5: Set<Loc>, ?sep_?sep_?leaf_Alloc_1: Set<Loc>,
+          ?sep_?sep_?leaf_Alloc_3: Set<Loc> ::
+     ?leaf_Alloc_5 ==
+       ?sep_?leaf_Alloc_5 ++ ?sep_?leaf_Alloc_4 ++ ?sep_?leaf_Alloc_3 ++
+         ?sep_?leaf_Alloc_1 &&
+     ?leaf_Alloc_6 ==
+       ?sep_?leaf_Alloc_5 ++ ?sep_?leaf_Alloc_4 ++ ?sep_?leaf_Alloc_3 ++
+         ?sep_?leaf_Alloc_2 &&
+     ?sep_?leaf_Alloc_1 == ?sep_?sep_?leaf_Alloc_1 &&
+     ?sep_?leaf_Alloc_2 == ?sep_?sep_?leaf_Alloc_3 &&
+     ?sep_?leaf_Alloc_3 == lslseg_domain(data, next, res, last, last.data) &&
+     ?sep_?leaf_Alloc_4 == uslseg_domain(data, next, a, null, last.data) &&
+     ?sep_?leaf_Alloc_5 == uslseg_domain(data, next, b, null, last.data) &&
+     ?sep_?sep_?leaf_Alloc_1 == {last} &&
+     ?sep_?sep_?leaf_Alloc_3 == {last} &&
+     ?leaf_Alloc_5 == Alloc && last.next == a && {} == {} &&
+       {} == ?sep_?leaf_Alloc_1 ** ?sep_?leaf_Alloc_3 &&
+       {} == ?sep_?leaf_Alloc_1 ** ?sep_?leaf_Alloc_4 &&
+       {} == ?sep_?leaf_Alloc_1 ** ?sep_?leaf_Alloc_5 &&
+       {} == ?sep_?leaf_Alloc_3 ** ?sep_?leaf_Alloc_4 &&
+       {} == ?sep_?leaf_Alloc_3 ** ?sep_?leaf_Alloc_5 &&
+       {} == ?sep_?leaf_Alloc_4 ** ?sep_?leaf_Alloc_5 &&
+       lslseg_struct(data, next, res, last, last.data, ?sep_?leaf_Alloc_3) &&
+       uslseg_struct(data, next, a, null, last.data, ?sep_?leaf_Alloc_4) &&
+       uslseg_struct(data, next, b, null, last.data, ?sep_?leaf_Alloc_5) ||
+       ?leaf_Alloc_6 == Alloc && last.next == b && {} == {} &&
+         {} == ?sep_?leaf_Alloc_2 ** ?sep_?leaf_Alloc_3 &&
+         {} == ?sep_?leaf_Alloc_2 ** ?sep_?leaf_Alloc_4 &&
+         {} == ?sep_?leaf_Alloc_2 ** ?sep_?leaf_Alloc_5 &&
+         {} == ?sep_?leaf_Alloc_3 ** ?sep_?leaf_Alloc_4 &&
+         {} == ?sep_?leaf_Alloc_3 ** ?sep_?leaf_Alloc_5 &&
+         {} == ?sep_?leaf_Alloc_4 ** ?sep_?leaf_Alloc_5 &&
+         lslseg_struct(data, next, res, last, last.data, ?sep_?leaf_Alloc_3) &&
+         uslseg_struct(data, next, a, null, last.data, ?sep_?leaf_Alloc_4) &&
+         uslseg_struct(data, next, b, null, last.data, ?sep_?leaf_Alloc_5));
+/* framecondition of merge_loop */
+free ensures null !in Alloc;
+/* framecondition of merge_loop */
+free ensures Alloc_init <= AllocCaller;
+/* framecondition of merge_loop */
+free ensures Alloc ** (AllocCaller -- Alloc_init) == {};
+/* framecondition of merge_loop */
+free ensures Frame(Alloc_init, AllocCaller, old(next), next);
+/* loop exit condition of merge_loop */
+free ensures !(a != null || b != null);
+/* framecondition of merge_loop */
+free ensures res == res_init;
+{
+  /* initial footprint of merge_loop */
+  assume null !in Alloc_init &&
+    (exists ?leaf_Alloc_init_3: Set<Loc>, ?leaf_Alloc_init_4: Set<Loc>,
+            ?sep_?leaf_Alloc_init_4: Set<Loc>,
+            ?sep_?leaf_Alloc_init_5: Set<Loc>,
+            ?sep_?leaf_Alloc_init_6: Set<Loc>,
+            ?sep_?leaf_Alloc_init_7: Set<Loc>,
+            ?sep_?leaf_Alloc_init_8: Set<Loc>,
+            ?sep_?sep_?leaf_Alloc_init_1: Set<Loc>,
+            ?sep_?sep_?leaf_Alloc_init_3: Set<Loc> ::
+       ?leaf_Alloc_init_3 ==
+         ?sep_?leaf_Alloc_init_8 ++ ?sep_?leaf_Alloc_init_7 ++
+           ?sep_?leaf_Alloc_init_6 ++ ?sep_?leaf_Alloc_init_4 &&
+       ?leaf_Alloc_init_4 ==
+         ?sep_?leaf_Alloc_init_8 ++ ?sep_?leaf_Alloc_init_7 ++
+           ?sep_?leaf_Alloc_init_6 ++ ?sep_?leaf_Alloc_init_5 &&
+       ?sep_?leaf_Alloc_init_4 == ?sep_?sep_?leaf_Alloc_init_1 &&
+       ?sep_?leaf_Alloc_init_5 == ?sep_?sep_?leaf_Alloc_init_3 &&
+       ?sep_?leaf_Alloc_init_6 ==
+         lslseg_domain(data, next, res_init, last_init, last_init.data) &&
+       ?sep_?leaf_Alloc_init_7 ==
+         uslseg_domain(data, next, a_init, null, last_init.data) &&
+       ?sep_?leaf_Alloc_init_8 ==
+         uslseg_domain(data, next, b_init, null, last_init.data) &&
+       ?sep_?sep_?leaf_Alloc_init_1 == {last_init} &&
+       ?sep_?sep_?leaf_Alloc_init_3 == {last_init} &&
+       ?leaf_Alloc_init_3 == Alloc_init && last_init.next == a_init &&
+         {} == {} &&
+         {} == ?sep_?leaf_Alloc_init_4 ** ?sep_?leaf_Alloc_init_6 &&
+         {} == ?sep_?leaf_Alloc_init_4 ** ?sep_?leaf_Alloc_init_7 &&
+         {} == ?sep_?leaf_Alloc_init_4 ** ?sep_?leaf_Alloc_init_8 &&
+         {} == ?sep_?leaf_Alloc_init_6 ** ?sep_?leaf_Alloc_init_7 &&
+         {} == ?sep_?leaf_Alloc_init_6 ** ?sep_?leaf_Alloc_init_8 &&
+         {} == ?sep_?leaf_Alloc_init_7 ** ?sep_?leaf_Alloc_init_8 &&
+         lslseg_struct(data, next, res_init, last_init, last_init.data,
+                       ?sep_?leaf_Alloc_init_6) &&
+         uslseg_struct(data, next, a_init, null, last_init.data,
+                       ?sep_?leaf_Alloc_init_7) &&
+         uslseg_struct(data, next, b_init, null, last_init.data,
+                       ?sep_?leaf_Alloc_init_8) ||
+         ?leaf_Alloc_init_4 == Alloc_init && last_init.next == b_init &&
+           {} == {} &&
+           {} == ?sep_?leaf_Alloc_init_5 ** ?sep_?leaf_Alloc_init_6 &&
+           {} == ?sep_?leaf_Alloc_init_5 ** ?sep_?leaf_Alloc_init_7 &&
+           {} == ?sep_?leaf_Alloc_init_5 ** ?sep_?leaf_Alloc_init_8 &&
+           {} == ?sep_?leaf_Alloc_init_6 ** ?sep_?leaf_Alloc_init_7 &&
+           {} == ?sep_?leaf_Alloc_init_6 ** ?sep_?leaf_Alloc_init_8 &&
+           {} == ?sep_?leaf_Alloc_init_7 ** ?sep_?leaf_Alloc_init_8 &&
+           lslseg_struct(data, next, res_init, last_init, last_init.data,
+                         ?sep_?leaf_Alloc_init_6) &&
+           uslseg_struct(data, next, a_init, null, last_init.data,
+                         ?sep_?leaf_Alloc_init_7) &&
+           uslseg_struct(data, next, b_init, null, last_init.data,
+                         ?sep_?leaf_Alloc_init_8));
+  Alloc := Alloc_init;
+  res, last, b, a := res_init, last_init, b_init, a_init;
+  choose
+  {
+    /* if then */
+    assume a != null || b != null;
+    choose
+    {
+      /* if then */
+      assume a == null || b != null && a.data > b.data;
+      /* check heap access */
+      assert last in Alloc;
+      next := next[last := b];
+      last := b;
+      /* check heap access */
+      assert b in Alloc;
+      b := b.next;
+    }
+    or
+    {
+      /* if else */
+      assume !(a == null || b != null && a.data > b.data);
+      /* check heap access */
+      assert last in Alloc;
+      next := next[last := a];
+      last := a;
+      /* check heap access */
+      assert a in Alloc;
+      a := a.next;
+    }
+    AllocCallee_init, AllocCallee, res, last, b, a :=
+      call merge_loop(Alloc, res, last, b, a);
+    Alloc := AllocCallee ++ (Alloc -- AllocCallee_init);
+  }
+  or
+  /* if else */
+  assume !(a != null || b != null);
+}
+
+procedure merge_sort(ghost AllocCaller: Set<Loc>, lst: Loc) 
+returns (ghost Alloc_init: Set<Loc>, ghost Alloc: Set<Loc>, res_1: Loc) 
+locals (lst2: Loc, lst1: Loc, b_1: Loc, a_1: Loc, 
+        ghost AllocCallee_init: Set<Loc>, ghost AllocCallee: Set<Loc>)
+/* precondition of merge_sort */
+check requires
+  (exists ?leaf_AllocCaller_11: Set<Loc> ::
+     ?leaf_AllocCaller_11 == lseg_domain(next, lst, null) &&
+     ?leaf_AllocCaller_11 <= AllocCaller &&
+     lseg_struct(next, lst, null, ?leaf_AllocCaller_11));
+/* initial footprint of merge_sort */
+free ensures null !in Alloc_init &&
+  (exists ?leaf_Alloc_init_6: Set<Loc> :: ?leaf_Alloc_init_6 == Alloc_init &&
+     ?leaf_Alloc_init_6 == lseg_domain(old(next), lst, null) &&
+     lseg_struct(old(next), lst, null, ?leaf_Alloc_init_6));
+/* postcondition of merge_sort */
+ensures
+  (exists ?leaf_Alloc_11: Set<Loc> :: ?leaf_Alloc_11 == Alloc &&
+     ?leaf_Alloc_11 == slseg_domain(data, next, res_1, null) &&
+     slseg_struct(data, next, res_1, null, ?leaf_Alloc_11));
+/* framecondition of merge_sort */
+free ensures null !in Alloc;
+/* framecondition of merge_sort */
+free ensures Alloc_init <= AllocCaller;
+/* framecondition of merge_sort */
+free ensures Alloc ** (AllocCaller -- Alloc_init) == {};
+/* framecondition of merge_sort */
+free ensures Frame(Alloc_init, AllocCaller, old(next), next);
+{
+  /* initial footprint of merge_sort */
+  assume null !in Alloc_init &&
+    (exists ?leaf_Alloc_init_6: Set<Loc> ::
+       ?leaf_Alloc_init_6 == Alloc_init &&
+       ?leaf_Alloc_init_6 == lseg_domain(next, lst, null) &&
+       lseg_struct(next, lst, null, ?leaf_Alloc_init_6));
+  Alloc := Alloc_init;
+  havoc lst1, lst2;
+  AllocCallee_init, AllocCallee, lst1, lst2 := call split(Alloc, lst);
+  Alloc := AllocCallee ++ (Alloc -- AllocCallee_init);
+  havoc a_1;
+  AllocCallee_init, AllocCallee, a_1 := call merge_sort(Alloc, lst1);
+  Alloc := AllocCallee ++ (Alloc -- AllocCallee_init);
+  havoc b_1;
+  AllocCallee_init, AllocCallee, b_1 := call merge_sort(Alloc, lst2);
+  Alloc := AllocCallee ++ (Alloc -- AllocCallee_init);
+  AllocCallee_init, AllocCallee, res_1 := call merge(Alloc, a_1, b_1);
+  Alloc := AllocCallee ++ (Alloc -- AllocCallee_init);
+  return Alloc_init, Alloc, res_1;
+}
+
+procedure split(ghost AllocCaller: Set<Loc>, x: Loc) 
+returns (ghost Alloc_init: Set<Loc>, ghost Alloc: Set<Loc>, y: Loc, z: Loc) 
+locals (tmp: Loc, curr: Loc, ghost AllocCallee_init: Set<Loc>, 
+        ghost AllocCallee: Set<Loc>)
+/* precondition of split */
+check requires
+  (exists ?leaf_AllocCaller_15: Set<Loc> ::
+     ?leaf_AllocCaller_15 == lseg_domain(next, x, null) &&
+     ?leaf_AllocCaller_15 <= AllocCaller &&
+     lseg_struct(next, x, null, ?leaf_AllocCaller_15));
+/* initial footprint of split */
+free ensures null !in Alloc_init &&
+  (exists ?leaf_Alloc_init_8: Set<Loc> :: ?leaf_Alloc_init_8 == Alloc_init &&
+     ?leaf_Alloc_init_8 == lseg_domain(old(next), x, null) &&
+     lseg_struct(old(next), x, null, ?leaf_Alloc_init_8));
+/* postcondition of split */
+ensures
+  (exists ?leaf_Alloc_15: Set<Loc>, ?sep_?leaf_Alloc_13: Set<Loc>,
+          ?sep_?leaf_Alloc_14: Set<Loc> ::
+     ?leaf_Alloc_15 == ?sep_?leaf_Alloc_14 ++ ?sep_?leaf_Alloc_13 &&
+     ?leaf_Alloc_15 == Alloc &&
+     ?sep_?leaf_Alloc_13 == lseg_domain(next, y, null) &&
+     ?sep_?leaf_Alloc_14 == lseg_domain(next, z, null) &&
+     {} == ?sep_?leaf_Alloc_13 ** ?sep_?leaf_Alloc_14 &&
+     lseg_struct(next, y, null, ?sep_?leaf_Alloc_13) &&
+     lseg_struct(next, z, null, ?sep_?leaf_Alloc_14));
+/* framecondition of split */
+free ensures null !in Alloc;
+/* framecondition of split */
+free ensures Alloc_init <= AllocCaller;
+/* framecondition of split */
+free ensures Alloc ** (AllocCaller -- Alloc_init) == {};
+/* framecondition of split */
+free ensures Frame(Alloc_init, AllocCaller, old(next), next);
+{
+  /* initial footprint of split */
+  assume null !in Alloc_init &&
+    (exists ?leaf_Alloc_init_8: Set<Loc> ::
+       ?leaf_Alloc_init_8 == Alloc_init &&
+       ?leaf_Alloc_init_8 == lseg_domain(next, x, null) &&
+       lseg_struct(next, x, null, ?leaf_Alloc_init_8));
+  Alloc := Alloc_init;
+  y, z := x, x;
+  havoc curr;
+  curr := x;
+  AllocCallee_init, AllocCallee, z, y, curr :=
+    call split_loop(Alloc, z, y, curr);
+  Alloc := AllocCallee ++ (Alloc -- AllocCallee_init);
+  choose
+  {
+    /* if then */
+    assume z != null;
+    havoc tmp;
+    tmp := z;
+    /* check heap access */
+    assert z in Alloc;
+    z := z.next;
+    /* check heap access */
+    assert tmp in Alloc;
+    next := next[tmp := null];
+  }
+  or
+  /* if else */
+  assume z == null;
+}
+
+procedure
+  split_loop(ghost AllocCaller: Set<Loc>, z_init: Loc, y_init: Loc, 
+             curr_init: Loc) 
+returns (ghost Alloc_init: Set<Loc>, ghost Alloc: Set<Loc>, z: Loc, y: Loc, 
+         curr: Loc) 
+locals (ghost AllocCallee_init: Set<Loc>, ghost AllocCallee: Set<Loc>)
+/* invariant */
+check requires
+  (exists ?leaf_AllocCaller_19: Set<Loc>,
+          ?sep_?leaf_AllocCaller_19: Set<Loc>,
+          ?sep_?leaf_AllocCaller_20: Set<Loc>,
+          ?sep_?leaf_AllocCaller_21: Set<Loc> ::
+     ?leaf_AllocCaller_19 ==
+       ?sep_?leaf_AllocCaller_21 ++ ?sep_?leaf_AllocCaller_20 ++
+         ?sep_?leaf_AllocCaller_19 &&
+     ?sep_?leaf_AllocCaller_19 == lseg_domain(next, y_init, z_init) &&
+     ?sep_?leaf_AllocCaller_20 == lseg_domain(next, z_init, curr_init) &&
+     ?sep_?leaf_AllocCaller_21 == lseg_domain(next, curr_init, null) &&
+     {} == ?sep_?leaf_AllocCaller_19 ** ?sep_?leaf_AllocCaller_20 &&
+     {} == ?sep_?leaf_AllocCaller_19 ** ?sep_?leaf_AllocCaller_21 &&
+     {} == ?sep_?leaf_AllocCaller_20 ** ?sep_?leaf_AllocCaller_21 &&
+     ?leaf_AllocCaller_19 <= AllocCaller &&
+     lseg_struct(next, curr_init, null, ?sep_?leaf_AllocCaller_21) &&
+     lseg_struct(next, y_init, z_init, ?sep_?leaf_AllocCaller_19) &&
+     lseg_struct(next, z_init, curr_init, ?sep_?leaf_AllocCaller_20));
+/* initial footprint of split_loop */
+free ensures null !in Alloc_init &&
+  (exists ?leaf_Alloc_init_10: Set<Loc>, ?sep_?leaf_Alloc_init_10: Set<Loc>,
+          ?sep_?leaf_Alloc_init_11: Set<Loc>,
+          ?sep_?leaf_Alloc_init_12: Set<Loc> ::
+     ?leaf_Alloc_init_10 ==
+       ?sep_?leaf_Alloc_init_12 ++ ?sep_?leaf_Alloc_init_11 ++
+         ?sep_?leaf_Alloc_init_10 &&
+     ?leaf_Alloc_init_10 == Alloc_init &&
+     ?sep_?leaf_Alloc_init_10 == lseg_domain(next, y_init, z_init) &&
+     ?sep_?leaf_Alloc_init_11 == lseg_domain(next, z_init, curr_init) &&
+     ?sep_?leaf_Alloc_init_12 == lseg_domain(next, curr_init, null) &&
+     {} == ?sep_?leaf_Alloc_init_10 ** ?sep_?leaf_Alloc_init_11 &&
+     {} == ?sep_?leaf_Alloc_init_10 ** ?sep_?leaf_Alloc_init_12 &&
+     {} == ?sep_?leaf_Alloc_init_11 ** ?sep_?leaf_Alloc_init_12 &&
+     lseg_struct(next, curr_init, null, ?sep_?leaf_Alloc_init_12) &&
+     lseg_struct(next, y_init, z_init, ?sep_?leaf_Alloc_init_10) &&
+     lseg_struct(next, z_init, curr_init, ?sep_?leaf_Alloc_init_11));
+/* invariant */
+free ensures
+  (exists ?leaf_Alloc_19: Set<Loc>, ?sep_?leaf_Alloc_19: Set<Loc>,
+          ?sep_?leaf_Alloc_20: Set<Loc>, ?sep_?leaf_Alloc_21: Set<Loc> ::
+     ?leaf_Alloc_19 ==
+       ?sep_?leaf_Alloc_21 ++ ?sep_?leaf_Alloc_20 ++ ?sep_?leaf_Alloc_19 &&
+     ?leaf_Alloc_19 == Alloc &&
+     ?sep_?leaf_Alloc_19 == lseg_domain(next, y, z) &&
+     ?sep_?leaf_Alloc_20 == lseg_domain(next, z, curr) &&
+     ?sep_?leaf_Alloc_21 == lseg_domain(next, curr, null) &&
+     {} == ?sep_?leaf_Alloc_19 ** ?sep_?leaf_Alloc_20 &&
+     {} == ?sep_?leaf_Alloc_19 ** ?sep_?leaf_Alloc_21 &&
+     {} == ?sep_?leaf_Alloc_20 ** ?sep_?leaf_Alloc_21 &&
+     lseg_struct(next, curr, null, ?sep_?leaf_Alloc_21) &&
+     lseg_struct(next, y, z, ?sep_?leaf_Alloc_19) &&
+     lseg_struct(next, z, curr, ?sep_?leaf_Alloc_20));
+/* framecondition of split_loop */
+free ensures null !in Alloc;
+/* framecondition of split_loop */
+free ensures Alloc_init <= AllocCaller;
+/* framecondition of split_loop */
+free ensures Alloc ** (AllocCaller -- Alloc_init) == {};
+/* loop exit condition of split_loop */
+free ensures curr == null;
+/* framecondition of split_loop */
+free ensures y == y_init;
+{
+  /* initial footprint of split_loop */
+  assume null !in Alloc_init &&
+    (exists ?leaf_Alloc_init_10: Set<Loc>,
+            ?sep_?leaf_Alloc_init_10: Set<Loc>,
+            ?sep_?leaf_Alloc_init_11: Set<Loc>,
+            ?sep_?leaf_Alloc_init_12: Set<Loc> ::
+       ?leaf_Alloc_init_10 ==
+         ?sep_?leaf_Alloc_init_12 ++ ?sep_?leaf_Alloc_init_11 ++
+           ?sep_?leaf_Alloc_init_10 &&
+       ?leaf_Alloc_init_10 == Alloc_init &&
+       ?sep_?leaf_Alloc_init_10 == lseg_domain(next, y_init, z_init) &&
+       ?sep_?leaf_Alloc_init_11 == lseg_domain(next, z_init, curr_init) &&
+       ?sep_?leaf_Alloc_init_12 == lseg_domain(next, curr_init, null) &&
+       {} == ?sep_?leaf_Alloc_init_10 ** ?sep_?leaf_Alloc_init_11 &&
+       {} == ?sep_?leaf_Alloc_init_10 ** ?sep_?leaf_Alloc_init_12 &&
+       {} == ?sep_?leaf_Alloc_init_11 ** ?sep_?leaf_Alloc_init_12 &&
+       lseg_struct(next, curr_init, null, ?sep_?leaf_Alloc_init_12) &&
+       lseg_struct(next, y_init, z_init, ?sep_?leaf_Alloc_init_10) &&
+       lseg_struct(next, z_init, curr_init, ?sep_?leaf_Alloc_init_11));
+  Alloc := Alloc_init;
+  z, y, curr := z_init, y_init, curr_init;
+  choose
+  {
+    /* if then */
+    assume curr != null;
+    /* check heap access */
+    assert z in Alloc;
+    z := z.next;
+    /* check heap access */
+    assert curr in Alloc;
+    curr := curr.next;
+    choose
+    {
+      /* if then */
+      assume curr != null;
+      /* check heap access */
+      assert curr in Alloc;
+      curr := curr.next;
+    }
+    or
+    /* if else */
+    assume curr == null;
+    AllocCallee_init, AllocCallee, z, y, curr :=
+      call split_loop(Alloc, z, y, curr);
+    Alloc := AllocCallee ++ (Alloc -- AllocCallee_init);
+  }
+  or
+  /* if else */
+  assume curr == null;
+}
+

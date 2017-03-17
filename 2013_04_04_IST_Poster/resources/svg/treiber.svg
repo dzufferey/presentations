@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="893.82361"
+   height="512.16162"
+   id="svg7783"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="New document 9">
+  <defs
+     id="defs7785">
+    <marker
+       inkscape:stockid="Arrow2Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mstart"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path10758"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(0.6,0.6)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path10761"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="467.62607"
+     inkscape:cy="141.79509"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="511"
+     inkscape:window-height="472"
+     inkscape:window-x="517"
+     inkscape:window-y="432"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7788">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(92.626068,-161.99565)">
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+       x="176.65623"
+       y="222.20024"
+       id="text5793"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5795"
+         x="176.65623"
+         y="222.20024"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">struct node {</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="237.20024"
+         id="tspan5797"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">    struct node *next;</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="252.20024"
+         id="tspan5799"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">    value data;</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="267.20026"
+         id="tspan5801"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">};</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="282.20026"
+         id="tspan5803"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">struct stack { struct node *Top; };</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="297.20026"
+         id="tspan5805"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">struct stack *S;</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="312.20026"
+         id="tspan5807"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono" /><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="327.20026"
+         id="tspan5809"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">void init() {</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="342.20026"
+         id="tspan5811"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">    S = alloc();</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="357.20026"
+         id="tspan5813"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">    S-&gt;Top = NULL;</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="372.20026"
+         id="tspan5815"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">}</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="387.20026"
+         id="tspan5817"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono" /><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="402.20026"
+         id="tspan5819"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">value pop() {</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="417.20026"
+         id="tspan5821"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">  struct node *t, *x;</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="432.20026"
+         id="tspan5823"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">  do {</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="447.20026"
+         id="tspan5825"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">    t = S-&gt;Top;</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="462.20026"
+         id="tspan5827"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">    if (t == NULL) return EMPTY;</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="477.20026"
+         id="tspan5829"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">    x = t-&gt;next;</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="492.20026"
+         id="tspan5831"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">  } while (!CAS(&amp;S-&gt;Top,t,x));</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="507.20026"
+         id="tspan5833"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">  return t-&gt;data;</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="522.20026"
+         id="tspan5835"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">}</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="537.20026"
+         id="tspan5837"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono" /><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="552.20026"
+         id="tspan5839"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">void push(value v) {</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="567.20026"
+         id="tspan5841"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">  struct node *t, *x;</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="582.20026"
+         id="tspan5843"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">  x = alloc();</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="597.20026"
+         id="tspan5845"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">  x-&gt;data = v;</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="612.20026"
+         id="tspan5847"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">  do {</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="627.20026"
+         id="tspan5849"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">      t = S-&gt;Top;</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="642.20026"
+         id="tspan5851"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">      x-&gt;next = t;</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="657.20026"
+         id="tspan5853"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">  } while (!CAS(&amp;S-&gt;Top,t,x));</tspan><tspan
+         sodipodi:role="line"
+         x="176.65623"
+         y="672.20026"
+         id="tspan5855"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono">}</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+       x="534.96509"
+       y="423.96027"
+       id="text5857"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5859"
+         x="534.96509"
+         y="423.96027"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace">void op() {</tspan><tspan
+         sodipodi:role="line"
+         x="534.96509"
+         y="441.46027"
+         id="tspan5861"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace">    do {</tspan><tspan
+         sodipodi:role="line"
+         x="534.96509"
+         y="458.96027"
+         id="tspan5863"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace">        t = S-&gt;Top;</tspan><tspan
+         sodipodi:role="line"
+         x="534.96509"
+         y="476.46027"
+         id="tspan5867"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace">        x = ... ;</tspan><tspan
+         sodipodi:role="line"
+         x="534.96509"
+         y="493.96027"
+         id="tspan5869"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace">    } while (!CAS(&amp;S-&gt;Top,t,x));</tspan><tspan
+         sodipodi:role="line"
+         x="534.96509"
+         y="511.46027"
+         id="tspan5871"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Monospace;-inkscape-font-specification:Monospace">}</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+       x="215.37694"
+       y="175.67143"
+       id="text5892"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5894"
+         x="215.37694"
+         y="175.67143">Treiber's stack</tspan><tspan
+         id="tspan7657"
+         sodipodi:role="line"
+         x="215.37694"
+         y="198.17143" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+       x="613.35254"
+       y="357.35138"
+       id="text5892-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5894-8"
+         x="613.35254"
+         y="357.35138">Treiber's stack</tspan><tspan
+         sodipodi:role="line"
+         x="613.35254"
+         y="379.85138"
+         id="tspan85202">simplified</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow2Mstart);marker-end:url(#Arrow2Mend)"
+       d="m 160.07147,489.04081 -76.820499,0 30.168999,0 0,166.3101 45.6973,0"
+       id="path9580"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       x="-92.626068"
+       y="494.26984"
+       id="text11560"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan11562"
+         x="-92.626068"
+         y="494.26984"
+         style="font-size:14px">Typical lock-free structure</tspan><tspan
+         sodipodi:role="line"
+         x="-92.626068"
+         y="508.26984"
+         id="tspan11564"
+         style="font-size:14px" /><tspan
+         sodipodi:role="line"
+         x="-92.626068"
+         y="522.26984"
+         id="tspan11574"
+         style="font-size:14px">If the CAS fails</tspan><tspan
+         sodipodi:role="line"
+         x="-92.626068"
+         y="536.26984"
+         id="tspan11568"
+         style="font-size:14px">        (thread might starve)</tspan><tspan
+         sodipodi:role="line"
+         x="-92.626068"
+         y="550.26984"
+         id="tspan11572"
+         style="font-size:14px" /><tspan
+         sodipodi:role="line"
+         x="-92.626068"
+         y="564.26984"
+         id="tspan11566"
+         style="font-size:14px">then another thread succeeded</tspan><tspan
+         sodipodi:role="line"
+         x="-92.626068"
+         y="578.26984"
+         id="tspan11570"
+         style="font-size:14px">        (global progress)</tspan><tspan
+         sodipodi:role="line"
+         x="-92.626068"
+         y="592.26984"
+         style="font-size:14px"
+         id="tspan11576" /><tspan
+         sodipodi:role="line"
+         x="-92.626068"
+         y="606.26984"
+         style="font-size:14px"
+         id="tspan11588" /><tspan
+         sodipodi:role="line"
+         x="-92.626068"
+         y="620.26984"
+         style="font-size:14px"
+         id="tspan11578">A proof of lock-freedom or </tspan><tspan
+         sodipodi:role="line"
+         x="-92.626068"
+         y="634.26984"
+         style="font-size:14px"
+         id="tspan11582">fair termination needs to</tspan><tspan
+         sodipodi:role="line"
+         x="-92.626068"
+         y="648.26984"
+         style="font-size:14px"
+         id="tspan11586">catpure that fact.</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       id="text7659"
+       y="193.9063"
+       x="214.92772"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         style="font-size:14px"
+         y="193.9063"
+         x="214.92772"
+         id="tspan7661"
+         sodipodi:role="line">[Treiber, 1986]</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       id="text7914"
+       y="458.86652"
+       x="497.92004"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="458.86652"
+         x="497.92004"
+         id="tspan7916"
+         sodipodi:role="line">Op1:</tspan></text>
+    <text
+       sodipodi:linespacing="100%"
+       id="text7918"
+       y="495.49347"
+       x="497.25183"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"
+       xml:space="preserve"><tspan
+         y="495.49347"
+         x="497.25183"
+         id="tspan7920"
+         sodipodi:role="line">Op2:</tspan></text>
+  </g>
+</svg>

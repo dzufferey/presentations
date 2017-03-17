@@ -1,0 +1,168 @@
+
+\newcommand{\letin}[2]{\textrm{let } #1 = #2 \textrm{ in}}
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\pset}[2]{\set{\,#1\mid#2\,}}
+\newcommand{\pto}{\rightharpoonup}
+
+\newcommand{\nullobj}{\m{null}}
+
+\newcommand{\rank}{\m{rank}}
+\newcommand{\mkframe}{\mathit{Frame}}
+\newcommand{\ep}{\mathit{ep}}
+
+\newcommand{\awrite}{\mathit{wr}}
+\newcommand{\ato}[3]{#1 \stackrel{#3}{\rightsquigarrow} #2}
+\newcommand{\atoto}[3]{#1 \stackrel{#3}{\leftrightsquigarrow} #2}
+\newcommand{\aread}{\mathit{rd}}
+\newcommand{\adiff}{\mathit{diff}}
+
+\newcommand{\fldread}{\mathit{fieldRead}}
+\newcommand{\fldwrite}{\mathit{fieldWrite}}
+\newcommand{\blank}{\mathord{\color{black!33}\bullet}}%
+\newcommand{\reachsymf}{\blank \xrightarrow{\blank \setminus \blank} \blank}
+\newcommand{\reachsym}{\xrightarrow{\edge \setminus}}
+
+\newcommand{\fwrite}[3]{#1[#2 := #3]}
+\newcommand{\fread}[2]{#2.#1}
+\newcommand{\reachf}[3]{#2 \xrightarrow{#1} #3}
+\newcommand{\reach}[2]{\reachf{\edge}{#1}{#2}}
+\newcommand{\reachModel}[3]{#1 \rightarrow^{#3} #2}
+\newcommand{\creachf}[4]{#2 \xrightarrow{#1 \setminus #4} #3}
+\newcommand{\creach}[3]{\creachf{\edge}{#1}{#2}{#3}}
+\newcommand{\cset}[2]{\{#1.\,#2\}}
+\newcommand{\creachModel}[4]{#1 \mathrel{\vphantom{\xrightarrow{\edge \setminus #3}}
+  \smash{\xrightarrow{\edge \setminus #3}}
+  \vphantom{\to}^{#4}} #2}
+\newcommand{\edge}{h}
+%\newcommand{\join}[2]{\joinsym(#1,#2)}
+\newcommand{\nil}{\mathsf{nil}}
+\newcommand{\univset}{\mathcal{U}}
+
+\newcommand{\Btwn}{\mathit{Btwn}}
+\newcommand{\m}[1]{\mathsf{#1}}
+\newcommand{\mi}[1]{\textit{#1}}
+
+\newcommand{\emp}{\mathsf{emp}}
+\newcommand{\liste}[2]{\m{ls}({#1},{#2})}
+\newcommand{\listen}[3]{\m{ls}^{#3}({#1},{#2})}
+\newcommand{\JoshLogicSimple}{\textsf{SLL}\xspace}
+\newcommand{\JoshLogic}{$\JoshLogicSimple\mathbb{B}$\xspace}
+\newcommand{\JoshLogicFull}{\JoshLogic(Boolean combinations of separation logic formulas for linked lists)}
+\newcommand{\LRJQ}{\textsf{GRASS}\xspace}
+\newcommand{\lrjq}{\mathsf{GS}}
+\newcommand{\lrjqaxioms}{\mathcal{K}_{\lrjq}}
+\newcommand{\lrjqmodels}{\mods_{\lrjq}}
+\newcommand{\lrjqtheory}{\theory_{\lrjq}}
+\newcommand{\lrjqinterp}{\theory_{\lrjq,\vars}}
+\newcommand{\lrjqsig}{\sig_{\lrjq}}
+\newcommand{\lrjqentails}{\models_\lrjq}
+\newcommand{\graph}{\mathsf{G}}
+\newcommand{\graphtheory}{\theory_\graph}
+\newcommand{\sets}{\mathsf{S}}
+\newcommand{\settheory}{\theory_\sets}
+\newcommand{\reduce}{\mathit{reduce}}
+
+\newcommand{\Tool}{\textsc{GRASShopper}\xspace}
+\newcommand{\zthree}{\textsc{Z3}\xspace}
+
+\newcommand{\hsucc}{\mathit{succ}}
+
+%-----------------------------------------------------
+% Theories, Models, etc
+\newcommand{\alg}{\mathcal{A}}%{\alpha}
+\newcommand{\oalg}{\mathcal{B}}%{\alpha}
+\newcommand{\va}{\beta}
+\newcommand{\sig}{\Sigma}
+\newcommand{\sorts}{S}
+\newcommand{\funs}{\Omega}
+\newcommand{\vars}{\mathcal{X}}
+\newcommand{\consts}{\Gamma}
+\newcommand{\preds}{\Pi}
+\newcommand{\dompreds}{\mathcal{D}}
+
+\newcommand{\support}[1]{[#1]}
+\newcommand{\substruct}{\subseteq}
+\newcommand{\supstruct}{\supseteq}
+
+\newcommand{\theory}{\mathcal{T}}
+\newcommand{\theoryeuf}{\theory_{\m{EUF}}}
+\newcommand{\Models}{\m{Mod}}
+\newcommand{\mods}{\mathcal{M}}
+
+
+\newcommand{\fldsort}{\m{field}}
+\newcommand{\boolsort}{\m{bool}}
+\newcommand{\nodesort}{\m{node}}
+\newcommand{\setsort}{\m{set}}
+
+\newcommand{\cardsym}{\m{card}}
+\newcommand{\card}[1]{\cardsym({#1})}
+
+
+
+\newcommand{\Terms}[1]{\m{Terms}(#1)}
+
+%-----------------------------------------------------
+% Local theory extensions
+
+\newcommand{\theoryext}{\mathcal{K}}
+\newcommand{\sigext}{\sig_e}
+\newcommand{\funext}{\funs_e}
+\newcommand{\st}{\m{st}}
+\newcommand{\Loc}{($\m{Loc}^\Psi$)\xspace}
+\newcommand{\pmodels}{\m{PMod}}
+
+\newcommand{\weld}{W}
+
+
+% -------------------------------------------------------------
+% Logical ops
+\newcommand{\mimplies}{\mathop{\Rightarrow}}
+\newcommand{\miff}{\mathop{\Leftrightarrow}}
+
+\newcommand{\fcom}[2]{{#1}^{[#2]}}
+
+\newcommand{\meq}{\mathord{=}}
+
+
+%-------------------------------
+
+\def\pointsto{\mapsto}
+\def\ls{\mathsf{ls}}
+
+\newcommand{\strfun}{\mathit{str}}
+\newcommand{\str}[2]{\strfun_{#1}(#2)}
+\def\tr{\mathit{tr}}
+\def\itr{\mathit{tr}^{-1}}
+\def\itrfull{\mathit{Tr}^{-1}}
+\def\ftrfull{\mathit{Trf}}
+\newcommand{\trfull}[2]{\mathit{Tr}_{#2}(#1)}
+\def\disjoint{\mathit{dj}}
+\def\idisjoint{\mathit{idj}}
+\def\structure{\mathit{st}}
+\def\footprint{\mathit{fp}}
+\def\tightness{\mathit{tc}}
+
+\newcommand{\SL}{{\mathsf{SL}}}
+\newcommand{\slforms}{\mathcal{H}}
+\newcommand{\tightentails}{\models_\SL}
+%\newcommand{\entailsLolli}{\models_l}
+\newcommand{\tightmodels}[3]{{#1},{#2} \models_\SL {#3}}
+\newcommand{\tightmodelsStandard}[1]{\tightmodels{\alg}{X}{#1}}
+\newcommand{\intumodels}[4]{{#1},{#2},{#3} \models_i {#4}}
+\newcommand{\intumodelsStandard}[1]{\intumodels{\alg}{\beta}{D}{#1}}
+
+\newcommand{\sel}{\mathsf{sel}}
+\newcommand{\upd}{\mathsf{upd}}
+
+\newcommand{\new}[1]{\textbf{new}(#1)}
+\newcommand{\dispose}[1]{\textbf{dispose}(#1)}
+\newcommand{\assert}{\textbf{assert}}
+\newcommand{\assume}{\textbf{assume}}
+\newcommand{\steprel}[1]{\stackrel{#1}{\leadsto}}
+\newcommand{\alloc}{\mathsf{Alloc}}
+\newcommand{\error}{\mathsf{fail}}
+\renewcommand{\wp}{\mathsf{wp}}
+\newcommand{\ite}[3]{\mathrm{if}\; #1 \; \mathrm{then} \; #2 \; \mathrm{else} \; #3}
+
+\newcommand{\var}{\mathit{var}}

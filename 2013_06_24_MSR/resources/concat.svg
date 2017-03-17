@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="535.73242"
+   height="250.91992"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="concat.svg"
+   inkscape:export-filename="/home/zufferey/presentations/2013_06_24_MSR/resources/concat.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="293.902"
+     inkscape:cy="111.28351"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1440"
+     inkscape:window-height="841"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-134.28571,-90.29689)">
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans Mono;-inkscape-font-specification:Bitstream Vera Sans Mono"
+       x="134.28571"
+       y="100.93361"
+       id="text2985"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan2987"
+         x="134.28571"
+         y="100.93361"><tspan
+   style="font-weight:bold"
+   id="tspan3023">procedure</tspan> concat(a: Node, b: Node) <tspan
+   style="font-weight:bold"
+   id="tspan3043">returns</tspan> (res: Node)</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="114.93361"
+         id="tspan2989"><tspan
+   style="font-weight:bold"
+   id="tspan3025">  requires</tspan> lseg(a, null) * lseg(b, null);</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="128.93361"
+         id="tspan2991"><tspan
+   style="font-weight:bold"
+   id="tspan3027">  ensures</tspan> lseg(res, null);</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="142.93361"
+         id="tspan2993">{</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="156.93361"
+         id="tspan2995"><tspan
+   style="font-weight:bold"
+   id="tspan3029">  if</tspan> (a == null) {</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="170.93361"
+         id="tspan2997"><tspan
+   style="font-weight:bold"
+   id="tspan3031">    return</tspan> b;</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="184.93361"
+         id="tspan2999">  } <tspan
+   style="font-weight:bold"
+   id="tspan3033">else</tspan> {</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="198.93361"
+         id="tspan3001"><tspan
+   style="font-weight:bold"
+   id="tspan3035">    var</tspan> curr: Node;</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="212.93361"
+         id="tspan3003">    curr := a;</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="226.93361"
+         id="tspan3005"><tspan
+   style="font-weight:bold"
+   id="tspan3037">    while</tspan> (curr.next != null) </tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="240.93361"
+         id="tspan3007"><tspan
+   style="font-weight:bold"
+   id="tspan3039">      invariant</tspan> curr != null * lseg(a, curr) * lseg(curr, null);</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="254.93361"
+         id="tspan3009">    {</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="268.93359"
+         id="tspan3011">      curr := curr.next; </tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="282.93359"
+         id="tspan3013">    }</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="296.93359"
+         id="tspan3015">    curr.next := b;</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="310.93359"
+         id="tspan3017"><tspan
+   style="font-weight:bold"
+   id="tspan3041">    return</tspan> a;</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="324.93359"
+         id="tspan3019">  }</tspan><tspan
+         sodipodi:role="line"
+         x="134.28571"
+         y="338.93359"
+         id="tspan3021">}</tspan></text>
+  </g>
+</svg>

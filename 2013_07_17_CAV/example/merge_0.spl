@@ -1,0 +1,163 @@
+var data: Fld<Int>;
+
+var next: Fld<Loc>;
+
+predicate llseg(x_1: Loc, y_1: Loc, ub: Int)
+{
+  x_1 == y_1 ||
+  x_1 != y_1 &*& cell(x_1) &*& x_1.data <= ub &*& llseg(x_1.next, y_1, ub)
+}
+
+
+predicate lseg(x_2: Loc, y_2: Loc)
+{
+  x_2 == y_2 || x_2 != y_2 &*& cell(x_2) &*& lseg(x_2.next, y_2)
+}
+
+
+predicate lslseg(x_3: Loc, y_3: Loc, ub_1: Int)
+{
+  slseg(x_3, y_3) && llseg(x_3, y_3, ub_1)
+}
+
+
+predicate slseg(x_4: Loc, y_4: Loc)
+{
+  x_4 == y_4 || x_4 != y_4 &*& cell(x_4) &*& uslseg(x_4.next, y_4, x_4.data)
+}
+
+
+predicate uslseg(x_5: Loc, y_5: Loc, lb: Int)
+{
+  x_5 == y_5 ||
+  x_5 != y_5 &*& cell(x_5) &*& lb <= x_5.data &*&
+    uslseg(x_5.next, y_5, x_5.data)
+}
+
+
+procedure merge(a: Loc, b: Loc) returns (res: Loc) 
+locals (last: Loc)
+/* precondition of merge */
+requires slseg(a, null) &*& slseg(b, null);
+/* postcondition of merge */
+ensures slseg(res, null);
+{
+  res := null;
+  choose
+  {
+    /* if then */
+    assume a == null;
+    return b;
+  }
+  or
+  {
+    /* if else */
+    assume a != null;
+    choose
+    {
+      /* if then */
+      assume b == null;
+      return a;
+    }
+    or
+    {
+      /* if else */
+      assume b != null;
+      choose
+      {
+        /* if then */
+        assume a.data <= b.data;
+        res := a;
+        a := a.next;
+      }
+      or
+      {
+        /* if else */
+        assume !(a.data <= b.data);
+        res := b;
+        b := b.next;
+      }
+    }
+  }
+  havoc last;
+  last := res;
+  while (a != null || b != null) 
+    invariant last.next == a &*& cell(last) || last.next == b &*& cell(last);
+    invariant
+    lslseg(res, last, last.data) &*& uslseg(a, null, last.data) &*&
+      uslseg(b, null, last.data);
+  choose
+  {
+    /* if then */
+    assume a == null || b != null && a.data > b.data;
+    next := next[last := b];
+    last := b;
+    b := b.next;
+  }
+  or
+  {
+    /* if else */
+    assume !(a == null || b != null && a.data > b.data);
+    next := next[last := a];
+    last := a;
+    a := a.next;
+  }
+  return res;
+}
+
+procedure merge_sort(lst: Loc) returns (res_1: Loc) 
+locals (lst2: Loc, lst1: Loc, b_1: Loc, a_1: Loc)
+/* precondition of merge_sort */
+requires lseg(lst, null);
+/* postcondition of merge_sort */
+ensures slseg(res_1, null);
+{
+  havoc lst1, lst2;
+  lst1, lst2 := call split(lst);
+  havoc a_1;
+  a_1 := call merge_sort(lst1);
+  havoc b_1;
+  b_1 := call merge_sort(lst2);
+  res_1 := call merge(a_1, b_1);
+  return res_1;
+}
+
+procedure split(x: Loc) returns (y: Loc, z: Loc) 
+locals (tmp: Loc, curr: Loc)
+/* precondition of split */
+requires lseg(x, null);
+/* postcondition of split */
+ensures lseg(y, null) &*& lseg(z, null);
+{
+  y, z := x, x;
+  havoc curr;
+  curr := x;
+  while (curr != null) 
+    invariant lseg(y, z) &*& lseg(z, curr) &*& lseg(curr, null);
+  {
+    z := z.next;
+    curr := curr.next;
+    choose
+    {
+      /* if then */
+      assume curr != null;
+      curr := curr.next;
+    }
+    or
+    /* if else */
+    assume curr == null;
+  }
+  choose
+  {
+    /* if then */
+    assume z != null;
+    havoc tmp;
+    tmp := z;
+    z := z.next;
+    next := next[tmp := null];
+  }
+  or
+  /* if else */
+  assume z == null;
+}
+

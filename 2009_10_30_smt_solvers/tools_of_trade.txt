@@ -1,0 +1,126 @@
+SMT solvers, tool of trade in formal methods.
+The satisfiability modulo theories (SMT) problem is decision problem that
+arises frequently in verification and automated reasoning.
+Given a formula F and a background theory T, is there an assignment that
+satisfies the axioms of T and F evaluates to true ?
+First, a brief introduction to formalism used and some of the most common
+theories such as equality with uninterpreted function symbols, linear (integer)
+arithmetic, etc. Then algorithms for these theories will be presented.
+
+
+
+Intro
+-----
+
+introductory example 
+figure 1.3 of DP
+
+Propositional logic (PL)
+    Syntax:
+      F :=  \top
+        |   \bot
+        |   ¬F
+        |   F /\ F
+        |   F \/ F
+        |   P (propositional variable)
+     syntactic sugar: F -> F, F <-> F, F xor F.
+    Semantics: interpretation < Domain, Assignement >
+        < {\top, \bot}, {P -> \top, Q -> \bot, ...} >
+        assigns to every variable exactly one value
+
+First order logic (FOL)
+    Syntax:
+      T :=  variables
+        |   constants
+        |   functions
+      P :=  predicates applied to terms
+        |   propositional variable
+      A :=  P
+        |   \top
+        |   \bot
+      F :=  F /\ F  
+        |   F \/ F
+        |   ¬F
+        |   A
+        |  \exists x. F[x]
+        |  \forall x. F[x]
+    universal closure, existential closure
+    closed formula (axioms)
+    Questions: validity (forall), satisfiability (exists)
+    semantics: interpretation  < Domain, Assignement >
+
+First order theories (signature, axioms)
+    example
+        equality with uninterpreted function symbols
+        presburger arithmetic
+    semantics: T_interpretation -> interpretation that satisfies the axioms
+    quantifier-free fragment
+    conjunctive quantifier-free fragment
+
+Theory solver
+----------
+
+Equality -> union-find
+
+EUF -> congruence closure
+    f^3(a) = a /\ f^5(a) = a /\ f(a) <> a
+    f(a,b) = a /\ f(f(a,b), b) <> a
+
+DL -> difference bound matrix (shortest path)
+
+LA -> simplex
+
+Nelson-Oppen -> convex theories
+    communication of theories with the equality only
+
+
+LIA -> branch-and-bound, cut-and-branch, cutting plan.
+List theory -> ...
+Array theory -> ...
+
+SAT solver
+----------
+
+Is a propositional formula satisfiable ?
+CNF, DNF
+
+
+DPLL: unit resolution, guesses, backtracking
+             SAT 
+              |
+decide -> propagate -> conflict -> UNSAT
+   |______________________|
+        backtrack
+example TCC p.29-30
+
+Learning: resolution (generalisation of modus ponens) to deduce new clauses.
+example: proof of unsat for (a \/ b) /\ (¬a \/ b) /\ (a \/ ¬b) /\ (¬a \/ ¬b)
+
+(a \/ b) (¬a \/ b)          (a \/ ¬b) (¬a \/ ¬b)
+------------------          --------------------
+        b                           ¬b
+        ------------------------------
+                    \bot
+
+now with the DPLL exploration:
+¬b -> a -> conflict
+resolve around a -> b
+backtrack and assign b -> a -> conflict
+resolve around ¬a -> ¬b
+resolve around b to \bot
+
+
+Decision policy
+goal is to figure out quickly the structure of the problem.
+'hot' variables
+
+SMT solver
+----------
+
+Integration with SAT solver to get propositional structure (Lazy)
+
+Craig interpolation
+-------------------
+
+related to quantifier elimination
+reuse CSIsat slides ...

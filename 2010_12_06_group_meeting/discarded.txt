@@ -1,0 +1,44 @@
+what to present:
+(1) work with Krish
+(2) work with Thomas
+
+make it interactive
+
+=====
+= 1 =
+=====
+-present the problem: evolution of cooperation in the repeated prisoner's dilemma.
+-present the question of learning: cultural vs genetic evolution.
+-present the simple version:
+  fixed strategies C,D,AllC,AllD,TFT
+  beta, payoff matrix
+  eta, selection + learning matrix
+-show simulations
+-question: where are the equilibria ?
+-solving for the equilibria:
+    system of equations, parameters (x1,x2,y1,eta,beta),
+    show the repartition of the equilibria in function of eta + beta,
+    get rid of variables: y1 = (1+x1-x2)/2, x2 ~= 0,
+    solve the systems solution on the corner + roots,
+    the existence of the interior solutions,
+    getting beta= fct(eta) for the point where the sqrt root is defined.
+-Et voila!
+
+=====
+= 2 =
+=====
+
+-a few examples: cool stuff that we want to verify but that are not intuitive.
+    pingpong
+    pi approximation
+    implicit sender
+    closure
+
+-inclusion check:
+  canonical form for graphs ? (link to anti-chain)
+  subgraph isomorphism
+  not injective on replicated nodes
+  sat-encoding ? (pigeonhole problem)
+-recursive process network:
+  WSTS view: downward compatible WSTS, subcovering problem ...
+

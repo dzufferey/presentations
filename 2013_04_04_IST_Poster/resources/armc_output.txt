@@ -1,0 +1,125 @@
+
+% BEGIN FIXED PREAMBLE
+:- multifile r/5,implicit_updates/0,var2names/2,preds/2,trans_preds/3,
+cube_size/1,start/1,error/1,refinement/1,cutpoint/1,invgen_template/2,
+invgen_template/1,cfg_exit_relation/1,stmtsrc/2,strengthening/2,globals/3,
+bound_var/2,bounding_vars/2,transition_access/2,atomic/3.
+refinement(inter).
+cube_size(1).
+% END FIXED PREAMBLE
+
+var2names( p(_, data(Op2_2, Op2_1, Op1_1)), [(Op2_2, 'Op2$2'), (Op2_1, 'Op2$1'), (Op1_1, 'Op1$1')]).
+
+preds( p(_, data(Op2_2, Op2_1, Op1_1)), []).
+
+trans_preds(
+  p(_, data(Op2_2, Op2_1, Op1_1)),  
+  p(_, data(Op2_2_prime, Op2_1_prime, Op1_1_prime)),  
+  [ Op2_2_prime + Op2_1_prime + Op1_1_prime < Op2_2 + Op2_1 + Op1_1,
+    Op2_2_prime + Op2_1_prime + Op1_1_prime = Op2_2 + Op2_1 + Op1_1,
+    0 = Op2_2_prime,
+    0 =< Op2_2_prime,
+    Op2_2_prime < Op2_2,
+    Op2_2_prime = Op2_2,
+    0 = Op2_1_prime,
+    0 =< Op2_1_prime,
+    Op2_1_prime < Op2_1,
+    Op2_1_prime = Op2_1,
+    0 = Op1_1_prime,
+    0 =< Op1_1_prime,
+    Op1_1_prime < Op1_1,
+    Op1_1_prime = Op1_1
+  ]).
+
+start( pc(s__11)).
+cutpoint(pc(s__1)).
+
+% unfolding; morphing, client: Op2 Success; folding; covering
+r(  p(pc(s__1), data(Op2_2, Op2_1, Op1_1)),
+    p(pc(s__1), data(Op2_2_prime, Op2_1_prime, Op1_1_prime)),
+    [ (Op2_1 + Op2_2) - Op2_2_prime = 1, Op1_1_prime = Op1_1, Op2_1_prime = 0, Op2_2 =< Op2_2_prime, 0 =< Op2_2, 0 =< Op1_1 ],
+    [], 0).
+% unfolding; morphing, client: Op2 Fail; folding; covering
+r(  p(pc(s__1), data(Op2_2, Op2_1, Op1_1)),
+    p(pc(s__1), data(Op2_2_prime, Op2_1_prime, Op1_1_prime)),
+    [ Op2_1 = Op2_1_prime, Op2_2 - Op2_2_prime = 1, Op1_1_prime - Op1_1 = 1, 0 =< Op1_1, 0 =< Op2_2_prime, 0 =< Op2_1_prime ],
+    [], 1).
+% unfolding; morphing, client: Op1 -> Op2; folding; covering
+r(  p(pc(s__1), data(Op2_2, Op2_1, Op1_1)),
+    p(pc(s__1), data(Op2_2_prime, Op2_1_prime, Op1_1_prime)),
+    [ Op2_1 - Op2_1_prime = -1, Op2_2 = Op2_2_prime, Op1_1 - Op1_1_prime = 1, 0 =< Op2_2_prime, 1 =< Op2_1_prime, 0 =< Op1_1_prime ],
+    [], 2).
+% initialize
+r(  p(pc(s__11), data(Op2_2, Op2_1, Op1_1)),
+    p(pc(s__1), data(Op2_2_prime, Op2_1_prime, Op1_1_prime)),
+    [ 0 =< Op1_1_prime, 0 =< Op2_1_prime, 0 =< Op2_2_prime ],
+    [], 3).
+========================
+ARMC3: Abstraction Refinement Model Checker, v. 3.20.05 (May-21-2008)
+rybal@mpi-sws.mpg.de
+cmd line: [live,/tmp/tmp.U0aZYCaURH
+]
+reading input from /tmp/tmp.U0aZYCaURH
+...done.
+
+
+
+--------------------------------------------------
+abstraction refinement iteration 0:
+lfp iteration 0 1 2 3 4 5 
+
+
+==================================================
+ARMC-LIVE: program is correct
+
+abstract trans fixpoint
+abstract_trans_state(0, pc(s__11), pc(s__11), [], stem, 1, (0,0)).
+abstract_trans_state(1, pc(s__11), pc(s__1), [4,8,12], stem, 2, (1,3)).
+abstract_trans_state(2, pc(s__1), pc(s__1), [1,4,7,8,9,12,14], loop, 3, (2,0)).
+abstract_trans_state(2, pc(s__1), pc(s__1), [2,4,5,8,10,12], loop, 4, (2,1)).
+abstract_trans_state(2, pc(s__1), pc(s__1), [2,4,6,8,12,13], loop, 5, (2,2)).
+abstract_trans_state(3, pc(s__1), pc(s__1), [1,4,7,8,9,12], loop, 6, (3,1)).
+abstract_trans_state(3, pc(s__1), pc(s__1), [1,4,8,12,13], loop, 7, (3,2)).
+abstract_trans_state(3, pc(s__1), pc(s__1), [2,4,5,8,12], loop, 8, (4,2)).
+abstract_trans_state(4, pc(s__1), pc(s__1), [1,4,8,12], loop, 9, (6,2)).
+
+frontier 0: stem 1 (pc(s__11)->pc(s__11)) from 0 by applying 0: 	T
+frontier 1: stem 2 (pc(s__11)->pc(s__1)) from 1 by applying 3: 	0=<Op2$2', 0=<Op2$1', 0=<Op1$1'
+frontier 2: loop 3 (pc(s__1)->pc(s__1)) from 2 by applying 0: 	Op2$2'+Op2$1'+Op1$1'<Op2$2+Op2$1+Op1$1, 0=<Op2$2', 0=Op2$1', 0=<Op2$1', Op2$1'<Op2$1, 0=<Op1$1', Op1$1'=Op1$1
+frontier 2: loop 4 (pc(s__1)->pc(s__1)) from 2 by applying 1: 	Op2$2'+Op2$1'+Op1$1'=Op2$2+Op2$1+Op1$1, 0=<Op2$2', Op2$2'<Op2$2, 0=<Op2$1', Op2$1'=Op2$1, 0=<Op1$1'
+frontier 2: loop 5 (pc(s__1)->pc(s__1)) from 2 by applying 2: 	Op2$2'+Op2$1'+Op1$1'=Op2$2+Op2$1+Op1$1, 0=<Op2$2', Op2$2'=Op2$2, 0=<Op2$1', 0=<Op1$1', Op1$1'<Op1$1
+frontier 3: loop 6 (pc(s__1)->pc(s__1)) from 3 by applying 1: 	Op2$2'+Op2$1'+Op1$1'<Op2$2+Op2$1+Op1$1, 0=<Op2$2', 0=Op2$1', 0=<Op2$1', Op2$1'<Op2$1, 0=<Op1$1'
+frontier 3: loop 7 (pc(s__1)->pc(s__1)) from 3 by applying 2: 	Op2$2'+Op2$1'+Op1$1'<Op2$2+Op2$1+Op1$1, 0=<Op2$2', 0=<Op2$1', 0=<Op1$1', Op1$1'<Op1$1
+frontier 3: loop 8 (pc(s__1)->pc(s__1)) from 4 by applying 2: 	Op2$2'+Op2$1'+Op1$1'=Op2$2+Op2$1+Op1$1, 0=<Op2$2', Op2$2'<Op2$2, 0=<Op2$1', 0=<Op1$1'
+frontier 4: loop 9 (pc(s__1)->pc(s__1)) from 6 by applying 2: 	Op2$2'+Op2$1'+Op1$1'<Op2$2+Op2$1+Op1$1, 0=<Op2$2', 0=<Op2$1', 0=<Op1$1'
+
+_5518->_5521:	#14:	Op2$2'+Op2$1'+Op1$1'<Op2$2+Op2$1+Op1$1, Op2$2'+Op2$1'+Op1$1'=Op2$2+Op2$1+Op1$1, 0=Op2$2', 0=<Op2$2', Op2$2'<Op2$2, Op2$2'=Op2$2, 0=Op2$1', 0=<Op2$1', Op2$1'<Op2$1, Op2$1'=Op2$1, 0=Op1$1', 0=<Op1$1', Op1$1'<Op1$1, Op1$1'=Op1$1
+---------------------------------------------+----run(s)----+---wall(s)----+
+Time on instantiating uf axioms              |     0.00     |     0.00     |
+Time on cli constraint solving               |     0.00     |     0.00     |
+Time on cli constraint preparation           |     0.00     |     0.00     |
+Time on cli matrix parsing                   |     0.00     |     0.00     |
+Time on cli preprocessing                    |     0.00     |     0.00     |
+Time on concretizing trans rel               |     0.00     |     0.00     |
+Time on concretizing from state              |     0.00     |     0.00     |
+Time on computing the subsumer subtree       |     0.00     |     0.00     |
+Time on finding the location of subsumer in queue|     0.00     |     0.00     |
+Time on path invariant generation            |     0.00     |     0.00     |
+Time on new predicate selection              |     0.00     |     0.00     |
+Time on refinement preprocessing cut         |     0.00     |     0.00     |
+Time on refinement cutting trace             |     0.00     |     0.00     |
+Time on refinement finding unsat subtrace    |     0.00     |     0.00     |
+Time on refinement                           |     0.00     |     0.00     |
+Time on fixpoint abstraction                 |     0.00     |     0.00     |
+Time on fixpoint test                        |     0.02     |     0.01     |
+Time on abstract check                       |     0.00     |     0.00     |
+Time on total including result checking      |     0.00     |     0.00     |
+Time on check result                         |     0.00     |     0.00     |
+Time on total                                |     0.00     |     0.00     |
+---------------------------------------------+--------------+--------------+
+
+
+
+==================================================
+ARMC-LIVE: program is correct
+

@@ -1,0 +1,99 @@
+success:
+
+
+unfolding:
+Op1′  = Op1
+Op2₁′ = Op2₁ - 1
+Op2₂′ = Op2₂
+Op2₃′ = 1
+
+morphing:
+Op1″  = Op1′
+Op2₁″ = Op2₁′
+Op2₂″ = Op2₂′
+Op2₃″ = 0
+
+folding + covering:
+Op1‴  = Op1″
+Op2₁‴ = Op2₃″
+Op2₂‴ = Op2₁″ + Op2₂″
+
+summary:
+Op1‴  = Op1
+Op2₁‴ = 0
+Op2₂‴ = Op2₁ + Op2₂ - 1
+
+--------------------
+CAS succeed
+Op1′  = Op1
+Op2₁′ = 0
+Op2₂′ = Op2₁ + Op2₂ - 1
+--------------------
+Read top of the stack:
+Op1₁′ = Op1₁ - 1
+Op2₁′ = Op2₁ + 1
+Op2₂′ = Op2₂
+--------------------
+CAS fails
+Op1₁′ = Op1₁ + 1
+Op2₂′ = Op2₂ - 1
+Op2₁′ = Op2₁
+============================
+unfolding; morphing, client: Op2 Success; folding; covering
+r(  p(pc(s__1), data(Head_2, Op2_2, Op2_1, Head_4, Op1_1, Head_1)),
+    p(pc(s__1), data(Head_2_prime, Op2_2_prime, Op2_1_prime, Head_4_prime, Op1_1_prime, Head_1_prime)),
+    [ Head_4_prime = 1 + Head_4,
+      Op2_2_prime = Op2_1 + Op2_2 - 1,
+      Head_1_prime = Head_1 + Head_2 - 1,
+      Op1_1_prime = Op1_1,
+      Op2_1_prime = 0,
+      Head_2_prime = 0,
+      Op2_2 =< Op2_2_prime,
+      0 =< Op2_2,
+      Head_2 - 1 =< Head_1_prime,
+      1 =< Head_2,
+      0 =< Head_4,
+      0 =< Op1_1 ],
+    [], 0).
+% unfolding; morphing, client: Op1 -> Op2; folding; covering
+r(  p(pc(s__1), data(Head_2, Op2_2, Op2_1, Head_4, Op1_1, Head_1)),
+    p(pc(s__1), data(Head_2_prime, Op2_2_prime, Op2_1_prime, Head_4_prime, Op1_1_prime, Head_1_prime)),
+    [ Op2_1_prime - Op2_1 = 1,
+      Head_1 = Head_1_prime,
+      Op2_2 = Op2_2_prime,
+      Head_2 - Head_2_prime = -1,
+      Head_4 = Head_4_prime,
+      Op1_1_prime - Op1_1 = -1,
+      0 =< Op2_1,
+      0 =< Op2_2_prime,
+      0 =< Head_1_prime,
+      0 =< Head_4_prime,
+      1 =< Head_2_prime,
+      1 =< Op1_1 ],
+    [], 1).
+% unfolding; morphing, client: Op2 Fail; folding; covering
+r(  p(pc(s__1), data(Head_2, Op2_2, Op2_1, Head_4, Op1_1, Head_1)),
+    p(pc(s__1), data(Head_2_prime, Op2_2_prime, Op2_1_prime, Head_4_prime, Op1_1_prime, Head_1_prime)),
+    [ Op2_2_prime - Op2_2 = -1,
+      Op2_1 = Op2_1_prime,
+      Head_1 = Head_1_prime,
+      Head_4_prime = Head_4,
+      Head_2 = Head_2_prime,
+      Op1_1_prime - Op1_1 = 1,
+      1 =< Op2_2,
+      1 =< Head_4,
+      1 =< Head_1_prime,
+      0 =< Op2_1_prime,
+      0 =< Op1_1,
+      0 =< Head_2_prime ],
+    [], 2).
+% initialize
+r(  p(pc(s__11), data(Head_2, Op2_2, Op2_1, Head_4, Op1_1, Head_1)),
+    p(pc(s__1), data(Head_2_prime, Op2_2_prime, Op2_1_prime, Head_4_prime, Op1_1_prime, Head_1_prime)),
+    [ 0 =< Op2_1_prime,
+      0 =< Op2_2_prime,
+      0 =< Op1_1_prime,
+      0 =< Head_1_prime,
+      0 =< Head_2_prime,
+      0 =< Head_4_prime ],
+    [], 3).
