@@ -4,13 +4,20 @@ _Damien Zufferey_
 
 2017.04.28
 
+sources for this presentation: https://github.com/dzufferey/presentations/tree/master/2017_04_28_CAD_tutorial
+
 ## Ways of creating models
 
 * 2D sketches and extrusion (linear, rotation, and along a path)
+
   <img src="http://www.freecadweb.org/wiki/images/a/ac/Revolve7_cropped.png">
+
 * Constructive Solid Geometry
+
   <img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Csg_tree.png">
+
 * Many more
+
   - Triangle mesh
   - NURBS
   - Isosurface (metaballs, implicit surface)
@@ -38,8 +45,9 @@ There are plenty of alternatives:
   - [Solidworks](http://www.solidworks.com/)
   - ...
 * Procedural CAD:
-  - [Antimony](https://github.com/mkeeter/antimony) (GUI + Python API)
+  - [Antimony](https://github.com/mkeeter/antimony) (GUI with dataflow-like programming + Python API)
   - [OpenJSCAD](https://openjscad.org/) (GUI + CSG libray in JavaScript)
+  - [JCSG](https://github.com/miho/JCSG) (GUI + CSG libray in Java)
   - [ImplicitCad](https://github.com/colah/ImplicitCAD) (CSG library in Haskell)
   - [SolidPython](https://github.com/SolidCode/SolidPython) (CSG library in Python)
   - [Scadla](https://github.com/dzufferey/scadla) (CSG library in Scala)
