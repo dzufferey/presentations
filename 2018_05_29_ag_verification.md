@@ -133,7 +133,7 @@ If `P ⋞ Q` then `P ∥ R ≼ Q ∥ R`.
 
 The fist and most common idea is to use the structure of the system and associate an interface/specification to each component.
 Ideally, the interfaces are much smaller than the implementations.
-Then we take the product of the interfaces which manageable. 
+Then we take the product of the interfaces which manageable.
 
 Assume that we have two components `P₁` and `P₂` and their interfaces are `I₁` and `I₂`.
 
@@ -228,9 +228,11 @@ _Proof._
 By induction on the length of the trace:
 * _base case_: `ε ∈ L(P₁ ∥ P₂)` and `ε ∈ L(I₁ ∥ I₂)` because we are dealing with prefix-closed languages.
 * _induction step_: `w⋅a ∈ L(P₁ ∥ P₂)`.
+
   We have the following induction hypothesis:
   - `w ∈ L(P₁ ∥ P₂)`
   - `w ∈ L(I₁ ∥ I₂)`
+
   We need to show `w⋅a ∈ L(I₁ ∥ I₂)`.
   Let us case-split on
   - `a ∈ outputs(I₁)`:
@@ -242,9 +244,10 @@ By induction on the length of the trace:
     * putting `w⋅a ∈ L(I₁)` and `w⋅a ∈ L(I₂)` together gives `w⋅a ∈ L(I₁ ∥ I₂)`
   - `a ∈ outputs(I₂)`:
     * same as previous case with 1 and 2 swapped
-  - `a ∉ outputs(I₁) ∧ a ∈ outputs(I₂)`:
+  - `a ∉ outputs(I₁) ∧ a ∉ outputs(I₂)`:
     * `a` is don't care therefore: `stutter(proj(L(I₁ ∥ I₂), Σ∖{a}), Σ) = L(I₁ ∥ I₂)`
     * because `w⋅a ∈ stutter(proj(L(I₁ ∥ I₂), Σ∖{a}), Σ)` we have `w⋅a ∈ L(I₁ ∥ I₂)`.
+∎
 
 
 _Example._
@@ -279,7 +282,7 @@ The rule can be generalize to `n` components as follow:
 ```
 compatible(I₁, I₂, …, I_n)
 ∀ i. implements(P_i, I_i)
-∀ i. P_i ∥ ∏_{j≠i} weaken(I_j, outputs(I_i)) ⋞ I_i 
+∀ i. P_i ∥ ∏_{j≠i} weaken(I_j, outputs(I_i)) ⋞ I_i
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
               ∏_i P_i ≼ ∏_i I_i
 ```
@@ -291,7 +294,6 @@ Sometime we would like to skip the interfaces altogether and directly use `φ`.
 
 #### AG reasoning rule 2 (AG2)
 
-__AG reasoning rule 2 (AG2)__
 ```
 ∀ a ∈ Σ. ∃ i. weaken(φ, a) ∥ P_i ≼ φ
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -305,14 +307,17 @@ _Proof._
 By induction on the length of the trace:
 * _base case_: `ε ∈ L(∏_i P_i)` and `ε ∈ φ` because we are dealing with prefix-closed languages.
 * _induction step_: `w⋅a ∈ L(∏_i P_i)`.
+
   We have the following hypothesis:
   - `w ∈ L(∏_i P_i)`
   - `w ∈ φ`
+
   We need to show `w⋅a ∈ φ`:
   - By the definition of the weakening `w ∈ φ  ⇒  w⋅a ∈ weaken(φ, a)`.
   - Because `w⋅a ∈ L(∏_i P_i)`, we have that `∀ i. w⋅a ∈ L(P_i)`.
   - Therefore `∀ i. w⋅a ∈ (weaken(φ, a) ∩ L(P_i))` which is `∀ i. w⋅a ∈ L(weaken(φ, a) ∥ P_i)`
   - By the antecedent of AG2, we have that `w⋅a ∈ φ`.
+∎
 
 
 _Remark._
