@@ -182,7 +182,9 @@ Furthermore, we have that
 * `inputs(P ∥ Q) = (inputs(P) ∪ inputs(Q)) ∖ (outputs(P) ∪ outputs(Q))`
 * `outputs(P ∥ Q) = outputs(P) ∪ outputs(Q)`
 
-To use an interface as assumption in a sound way, we need to weaken it.
+#### Weakening
+
+To use an interface as assumption in a sound way, we need to _weaken_ it.
 Weakening by a symbol `a` means that it is always possible to do `a`.
 
 In terms of languages, weakening by `a` means `∀ w ∈ L. w⋅a ∈ weaken(L, a)`
@@ -246,7 +248,6 @@ By induction on the length of the trace:
 
 
 _Example._
-TODO ...
 Let us look at:
 * `P₁` with `Σ = {0, 1}`, `inputs(P₁) = {0}`, `outputs(P₁) = {1}`
 * `I₁` with `Σ = {0, 1}`, `inputs(I₁) = {0}`, `outputs(I₁) = {1}`
