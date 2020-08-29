@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg1468"
+   sodipodi:docname="Anonymous-Mail-1-icon.svg"
+   viewBox="0 0 131.15984 84.128799"
+   sodipodi:version="0.32"
+   version="1.0"
+   y="0"
+   x="0"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   width="131.15984"
+   height="84.128799">
+  <defs
+     id="defs11" />
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     pagecolor="#ffffff"
+     inkscape:zoom="1.8346667"
+     borderopacity="1.0"
+     inkscape:current-layer="svg1468"
+     inkscape:cx="66.124416"
+     inkscape:cy="39.883105"
+     inkscape:window-height="1016"
+     inkscape:pageopacity="0.0"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <g
+     id="layer1"
+     transform="translate(-28.7157,-49.504305)">
+    <g
+       id="g2423"
+       transform="matrix(0.81088,0,0,0.81088,5.9097,-403.36)">
+      <rect
+         id="rect2398"
+         style="fill:#ffffff;stroke:#000000;stroke-width:3.75;stroke-linecap:round;stroke-linejoin:round"
+         rx="3"
+         ry="3"
+         height="100"
+         width="158"
+         y="560.35999"
+         x="30" />
+      <path
+         id="path2400"
+         style="fill:none;stroke:#000000;stroke-width:3.75;stroke-linejoin:round"
+         d="m 32,658.36 76,-56 80,58"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path2402"
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:3.75;stroke-linejoin:round"
+         d="M 31.935,561.05 107.7,621.02 186,560.39 31.94,561.05 Z"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Mail 1 icon</dc:title>
+        <dc:date>2006-12-26T00:00:00</dc:date>
+        <dc:description />
+        <dc:source>https://openclipart.org/detail/24606/-by--24606</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Anonymous</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
