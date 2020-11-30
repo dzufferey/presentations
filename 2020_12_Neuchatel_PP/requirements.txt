@@ -1,0 +1,11 @@
+notebook
+ipywidgets
+ipympl
+matplotlib
+folium
+RISE
+hide_code
+pymc3
+pandas
+numpy
+graphviz
