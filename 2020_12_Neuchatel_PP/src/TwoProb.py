@@ -11,6 +11,8 @@ class TwoProb(widgets.HBox):
 
     def __init__(self):
         super().__init__()
+        #{font-size: 14px;line-height: 24px;color: black;}
+        #print(self.style.keys)
         
         self.slider_a = widgets.FloatSlider(value=0.5, min=0, max=1.0, step=0.01,
                                             description='$P(A)$', readout_format='.2f')
@@ -47,16 +49,18 @@ class TwoProb(widgets.HBox):
             "$P(A | B)$", "$=$", "0.50",
             "$P(B | A)$", "$=$", "0.50"
         ]))
-        prob_lst = widgets.GridBox(
-            children=self.probs,
-            layout=widgets.Layout(
-                width='60%',
-                grid_template_columns='45% 20% 30%',
-                grid_template_rows='25px 25px 25px 25px 25px 25px 25px 25px')
-        )
+        #prob_lst = widgets.GridBox(
+        #    children=self.probs,
+        #    layout=widgets.Layout(
+        #        width='60%',
+        #        grid_template_columns='45% 20% 30%',
+        #        grid_template_rows='25px 25px 25px 25px 25px 25px 25px 25px')
+        #)
+        prob_lst = widgets.VBox([ widgets.HBox([self.probs[i] for i in range(3*j,3*(j+1))]) for j in range(0,8)])
         
         self.output = widgets.Output()  
         with self.output:
+            plt.rc('font', size=18)
             fig, ax = plt.subplots()
             self.fig = fig
             self.ax = ax
