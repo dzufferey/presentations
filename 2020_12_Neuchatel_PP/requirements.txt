@@ -1,7 +1,8 @@
+jupyterlab
 notebook
 ipywidgets
-ipympl
 matplotlib
+ipympl
 folium
 RISE
 hide_code

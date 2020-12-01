@@ -8,6 +8,5 @@ else
     pip3 install -r requirements.txt
     jupyter nbextension install --user --py hide_code
     jupyter nbextension enable --user --py hide_code
-    jupyter nbextension enable --user --py ipyleaflet
 fi
 
