@@ -155,7 +155,7 @@ class TwoProb(widgets.HBox):
         self.probs[20].value = ("%.2f" % (ab / b)) if b > 0 else "$-$"
         self.probs[23].value = ("%.2f" % (ab / a)) if a > 0 else "$-$"
 
-    @throttle(0.4)
+    @throttle(0.8)
     def updateGraph(self, a, b, ab, change):
         pp = ab
         pn = a - ab
@@ -166,7 +166,7 @@ class TwoProb(widgets.HBox):
             self.drawFig(pp, pn, np, nn)
             self.fig.canvas.draw()
 
-    @throttle(0.1)
+    @throttle(0.2)
     def handle_slider_change(self, change):
         old = self.slider_ab.value
         a = self.slider_a.value
