@@ -11,9 +11,7 @@ class TwoProb(widgets.HBox):
 
     def __init__(self):
         super().__init__()
-        #{font-size: 14px;line-height: 24px;color: black;}
-        #print(self.style.keys)
-        
+
         self.slider_a = widgets.FloatSlider(value=0.5, min=0, max=1.0, step=0.01,
                                             description='$P(A)$', readout_format='.2f')
         self.slider_b = widgets.FloatSlider(value=0.5, min=0, max=1.0, step=0.01,
@@ -38,6 +36,10 @@ class TwoProb(widgets.HBox):
         self.slider_b.observe(self.handle_slider_change, names='value')
         self.slider_ab.observe(self.update2, names='value')
         self.highlight.observe(self.update2, names='value')
+        self.slider_a.add_class('large-text')
+        self.slider_b.add_class('large-text')
+        self.slider_ab.add_class('large-text')
+        self.highlight.add_class('large-text')
         
         self.probs = tuple(map(lambda x: widgets.HTMLMath(x), [
             "$P(A)$", "$=$", "0.50",
@@ -49,13 +51,8 @@ class TwoProb(widgets.HBox):
             "$P(A | B)$", "$=$", "0.50",
             "$P(B | A)$", "$=$", "0.50"
         ]))
-        #prob_lst = widgets.GridBox(
-        #    children=self.probs,
-        #    layout=widgets.Layout(
-        #        width='60%',
-        #        grid_template_columns='45% 20% 30%',
-        #        grid_template_rows='25px 25px 25px 25px 25px 25px 25px 25px')
-        #)
+        for w in self.probs:
+            w.add_class('large-text')
         prob_lst = widgets.VBox([ widgets.HBox([self.probs[i] for i in range(3*j,3*(j+1))]) for j in range(0,8)])
         
         self.output = widgets.Output()  
@@ -155,7 +152,7 @@ class TwoProb(widgets.HBox):
         self.probs[20].value = ("%.2f" % (ab / b)) if b > 0 else "$-$"
         self.probs[23].value = ("%.2f" % (ab / a)) if a > 0 else "$-$"
 
-    @throttle(0.8)
+    @throttle(1.0)
     def updateGraph(self, a, b, ab, change):
         pp = ab
         pn = a - ab
@@ -166,7 +163,7 @@ class TwoProb(widgets.HBox):
             self.drawFig(pp, pn, np, nn)
             self.fig.canvas.draw()
 
-    @throttle(0.2)
+    @throttle(0.5)
     def handle_slider_change(self, change):
         old = self.slider_ab.value
         a = self.slider_a.value
