@@ -1,0 +1,30 @@
+Title
+    Programming Abstractions for Verifiable Software
+
+Abstract
+
+  In this talk, I will show how we can harness the synergy between programming
+languages and verification methods to help programmers build reliable software.
+  First, we will look at fault-tolerant distributed algorithms. These algorithms
+are central to any high-availability application but they are notoriously
+difficult to implement due to asynchronous communication and faults. A fault-
+tolerant consensus algorithms which can be described in ~50 lines of pseudo
+code can easily turns into a few thousand lines of actual code. To remediate
+this, I will introduce PSync a domain specific language for fault-tolerant
+distributed algorithms. The key insight is the use of communication-closure
+(logical boundaries in a program that messages should not cross) to structure
+the code. Communication-closure gives a syntactic scope to the communication,
+provides some form of logical time, and give the illusion of synchrony. These
+element greatly simplify the programming and verification of fault-tolerant
+algorithms.
+  In the second part of the talk, we will discuss a new project exploring how
+advances in rapid prototyping (3D printers) may impact how we develop software
+for robots. These advances may soon be enable adding computational elements as
+part of the internal structure of objects. The goal of this project is to
+rethink the software/hardware boundary and integrate the two together. I will
+present a system we are developing where components integrate for geometry
+(hardware) and behavior (software). The system allows from bottom-up composition
+and top-down decomposition. The bottom-up composition connects components
+together to achieve more complex behaviors. The top-down decomposition project a
+global specification on the individual components and performs verification at
+the level of individual components.

@@ -1,0 +1,41 @@
+Title
+
+    Programming Abstractions for Verifiable Software
+
+
+Abstract
+
+    In this talk, I will show how we can harness the synergy between
+programming languages and verification methods to help programmers build
+reliable software.  I will discuss three projects.
+    First, I will describe P a domain-specific language to write asynchronous
+event driven code.  P isolates the control-structure, or protocol, from the
+data-processing.  This allows us not only to generate efficient code, but also
+to test it using model checking techniques.  P was used to implement and test
+the core of the USB device driver stack in Microsoft Windows.
+    Then, we will look at fault-tolerant distributed algorithms. These algorithms
+are central to any high-availability application but they are notoriously
+difficult to implement due to asynchronous communication and faults.  To handle
+such situation, we integrate a scoping mechanism for communication as part the
+program syntax.  The key insight is the use of communication-closure (logical
+boundaries in a program that messages should not cross) to structure the code.
+This structure element greatly simplify the programming and verification of
+fault-tolerant distributed algorithms.
+    Finally, I will discuss a new project exploring how advances in rapid
+prototyping (3D printers) may impact the development of software for robots.
+These advances will soon be enable adding computational elements as part of
+the internal structure of objects. The goal of this project is to rethink the
+software/hardware boundary and integrate the two together. I will present a
+system we are developing where components integrate geometry (hardware) and
+behavior (software).
+
+
+Short Bio
+
+    Damien Zufferey is a research group leader at The Max Planck Institute for
+Software Systems (MPI-SWS) in Kaiserslautern since Fall 2016. His research
+interests lie in program analysis and verification, programming languages,
+distributed systems and automated reasoning.  Before moving to MPI-SWS, he
+got a PhD in 2013, working under supervision of Thomas A. Henzinger at the
+Institute of Science and Technology Austria (IST Austria) and then he worked
+as Postdoctoral Associate at MIT CSAIL in Martin Rinard's group.

@@ -1,0 +1,15 @@
+Title:
+    Verification of message-passing programs: model checking and
+    session types perspectives
+
+Abstract:
+    Implementing communication protocols is a routine task in modern
+connected software. However, verifying that a protocol is implemented
+correctly is still a challenge. In this talk, I will give an overview of
+the research on this topic. First, I will discuss communicating finite
+state machines, one of the most basic model in this domain, and explain
+why it is already Turing powerful. Then, we will look at session types
+which approach the problem by looking at the communication channels
+rather than the processes actions. After comparing the advantages and
+limitations of each approach, I'll briefly discuss ongoing research we
+are pursing on this topic.
